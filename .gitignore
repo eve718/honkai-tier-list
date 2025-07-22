@@ -4,8 +4,6 @@ venv/
 .DS_Store
 .env
 public/index.html  # We'll generate this during build
-# Ignore archived dataset files
-src/dataset_archive/*.json
 
-# But keep the directory structure
+# Keep the directory structure
 !src/dataset_archive/.gitkeep

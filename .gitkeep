@@ -1,4 +1,0 @@
-# In your project root
-cd src
-mkdir -p dataset_archive
-touch dataset_archive/.gitkeep
