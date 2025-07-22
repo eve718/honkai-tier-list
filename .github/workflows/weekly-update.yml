@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.AUTOMATED_UPDATE_TOKEN }}
+          token: ${{ secrets.AUTOMATED_UPDATE_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -37,5 +37,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.AUTOMATED_UPDATE_TOKEN }}
+          github_token: ${{ secrets.AUTOMATED_UPDATE_PAT }}
           branch: main
