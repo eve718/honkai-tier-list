@@ -14,6 +14,7 @@ COLORS = {
     "D": "#7fbfff",  # Blue
 }
 ROLE_TYPES = ["DPS", "Sub DPS", "Amplifier", "Sustain"]  # Define role types
+GITHUB_REPO_URL = "https://github.com/eve718/honkai-tier-list/tree/main/src"
 
 
 def sanitize_filename(name):
@@ -466,16 +467,17 @@ def generate_html(tier_lists):
         </div>
 """
 
-    html += """
+    html += f"""
         <footer>
             <p>Created with Honkai Star Rail Tier List Generator | Data updated weekly</p>
+            <p>View source on <a href="{GITHUB_REPO_URL}" target="_blank" style="color: #4cc9f0; text-decoration: none;">GitHub</a></p>
         </footer>
     </div>
     
     <script>
         // Tab switching functionality
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(button => {{
+            button.addEventListener('click', () => {{
                 // Remove active class from all buttons and content
                 document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -486,14 +488,14 @@ def generate_html(tier_lists):
                 // Show corresponding content
                 const tabId = button.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
-            });
-        });
-        document.querySelectorAll('img').forEach(img => {
-            img.onerror = () => {
+            }});
+        }});
+        document.querySelectorAll('img').forEach(img => {{
+            img.onerror = () => {{
             img.alt = "Image missing!";
             img.style.border = "2px dashed red";
-            };
-        });
+            }};
+        }});
     </script>
 </body>
 </html>
