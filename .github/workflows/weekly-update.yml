@@ -1,9 +1,8 @@
-name: Weekly Data Update [TEST MODE]
+name: Weekly Data Update
 
 on:
-  # Temporarily disable the schedule for testing
-  # schedule:
-  #   - cron: "0 0 * * 1" # Every Monday at 00:00 UTC
+  schedule:
+    - cron: "0 0 * * 1" # Every Monday at 00:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -28,26 +27,16 @@ jobs:
           cd src
           python update_data.py
 
-      # Add verification step for testing
-      - name: Verify updated data
+      - name: Commit changes
         run: |
-          cd src
-          echo "===== DATASET CONTENTS ====="
-          head -n 50 hsr_dataset.json
-          echo "============================"
+          git config --global user.name 'Automated Update'
+          git config --global user.email 'actions@users.noreply.github.com'
+          git add src/hsr_dataset.json
+          git add src/dataset_archive/.gitkeep  # Preserve directory structure
+          git diff --quiet && git diff --staged --quiet || git commit -m "Automated weekly data update"
 
-      # Disable auto-commit for testing
-      # - name: Commit changes
-      #   run: |
-      #     git config --global user.name 'Automated Update'
-      #     git config --global user.email 'actions@users.noreply.github.com'
-      #     git add src/hsr_dataset.json
-      #     git add src/dataset_archive/.gitkeep
-      #     git diff --quiet && git diff --staged --quiet || git commit -m "Automated weekly data update [TEST]"
-
-      # Disable push for testing
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@v0.6.0
-      #   with:
-      #     github_token: ${{ secrets.AUTOMATED_UPDATE_PAT }}
-      #     branch: main
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.AUTOMATED_UPDATE_PAT }}
+          branch: main
