@@ -1,13 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
-# Install Python dependencies
+# Install dependencies
 pip install -r requirements.txt
 
-# Run update and generation scripts
+# Run scripts
 cd src
 python update_data.py
 python visual_tierlist.py
 
-# Move generated files to public directory
-mv index.html ../public/
+# Move files to public directory
+cp index.html ../public/
 cp -r images ../public/
+
+echo "Build complete!"

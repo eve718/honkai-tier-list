@@ -3,3 +3,4 @@ __pycache__/
 venv/
 .DS_Store
 .env
+public/index.html  # We'll generate this during build
