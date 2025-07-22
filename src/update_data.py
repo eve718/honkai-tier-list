@@ -3,10 +3,17 @@ import json
 import os
 from datetime import datetime
 import pandas as pd
-from tierlist import DATASET_PATH
-from data_processor import get_processed_data  # Import the processor
+import shutil  # Add this import
 
-ARCHIVE_DIR = "dataset_archive/"
+# Remove: from tierlist import DATASET_PATH
+from data_processor import get_processed_data
+
+# Get the directory of this script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Define paths relative to script location
+ARCHIVE_DIR = os.path.join(SCRIPT_DIR, "dataset_archive")
+DATASET_PATH = os.path.join(SCRIPT_DIR, "hsr_dataset.json")  # Define locally
 VERSION = "3.4.1"
 
 
@@ -37,11 +44,18 @@ def clean_dataset(data):
 
 def update_dataset(new_data):
     """Update dataset with versioning"""
+    # Create archive directory if it doesn't exist
+    os.makedirs(ARCHIVE_DIR, exist_ok=True)
+
     # Archive current dataset if exists
     if os.path.exists(DATASET_PATH):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        os.makedirs(ARCHIVE_DIR, exist_ok=True)
-        os.rename(DATASET_PATH, f"{ARCHIVE_DIR}dataset_{VERSION}_{timestamp}.json")
+        archive_filename = f"dataset_{VERSION}_{timestamp}.json"
+        archive_path = os.path.join(ARCHIVE_DIR, archive_filename)
+
+        # Copy instead of rename to avoid cross-device issues
+        shutil.copy2(DATASET_PATH, archive_path)
+        print(f"Archived current dataset to {archive_path}")
 
     # Save new dataset
     with open(DATASET_PATH, "w") as f:
