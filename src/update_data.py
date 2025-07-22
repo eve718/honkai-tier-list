@@ -7,6 +7,7 @@ from tierlist import DATASET_PATH
 from data_processor import get_processed_data  # Import the processor
 
 ARCHIVE_DIR = "dataset_archive/"
+VERSION = "3.4.1"
 
 
 def clean_dataset(data):
@@ -40,7 +41,7 @@ def update_dataset(new_data):
     if os.path.exists(DATASET_PATH):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         os.makedirs(ARCHIVE_DIR, exist_ok=True)
-        os.rename(DATASET_PATH, f"{ARCHIVE_DIR}dataset_{timestamp}.json")
+        os.rename(DATASET_PATH, f"{ARCHIVE_DIR}dataset_{VERSION}_{timestamp}.json")
 
     # Save new dataset
     with open(DATASET_PATH, "w") as f:
@@ -65,7 +66,7 @@ if __name__ == "__main__":
         # Fetch and process data from GitHub
         print("Fetching and processing data from GitHub...")
         new_data = get_processed_data(
-            version="3.4.1",  # Update version as needed
+            version=VERSION,  # Update version as needed
             owner="LvlUrArti",  # GitHub owner
             repo="MocStats",  # Repository name
             path="data/raw_csvs",  # Path to CSV files
