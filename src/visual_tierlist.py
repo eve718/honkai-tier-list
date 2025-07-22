@@ -5,7 +5,7 @@ from datetime import datetime
 # Configuration
 DATASET_PATH = "hsr_dataset.json"
 ROLES_PATH = "character_roles.json"
-OUTPUT_FILE = "hsr_tierlist/index.html"
+OUTPUT_FILE = "../public/index.html"
 COLORS = {
     "S": "#ff7f7f",  # Red
     "A": "#ffbf7f",  # Orange
