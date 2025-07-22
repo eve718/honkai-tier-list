@@ -468,7 +468,7 @@ def generate_html(tier_lists):
 
     html += """
         <footer>
-            <p>Created with Honkai Star Rail Tier List Generator | Data updated bi-weekly</p>
+            <p>Created with Honkai Star Rail Tier List Generator | Data updated weekly</p>
         </footer>
     </div>
     
