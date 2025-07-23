@@ -37,44 +37,8 @@ def sanitize_filename(name):
     return name.strip().lower().replace(" ", "_")
 
 
-def generate_html(tier_lists, game_version, characters_data):
+def generate_html(tier_lists, game_version, characters_data, role_data):
     """Generate a visually appealing HTML tier list with tabbed interface and horizontal roles"""
-
-    # Helper function to generate tooltip content
-    def generate_tooltip(char, mode_name):
-        char_data = characters_data.get(char, {})
-        mode_data = char_data.get(mode_name, {})
-
-        # Extract stats with default values
-        usage = mode_data.get("usage", "N/A")
-        cycles = mode_data.get("cycles", "N/A")
-        score = mode_data.get("score", "N/A")
-
-        # Format stats display based on mode
-        if cycles == "Pure Fiction" or "Apocalyptic Shadow":
-            stats_display = f"Avg Score: {score}"
-        else:
-            stats_display = f"Avg Cycles: {cycles}"
-
-        # Format usage percentage
-        usage_display = f"Usage: {usage}%" if usage != "N/A" else "Usage: N/A"
-
-        # Escape special characters
-        char_escaped = html.escape(char)
-        stats_escaped = html.escape(stats_display)
-        usage_escaped = html.escape(usage_display)
-        version_escaped = html.escape(game_version)
-
-        return f"""
-        <div class="tooltip-content">
-            <div class="tooltip-header">{char_escaped}</div>
-            <div class="tooltip-stats">
-                <div>{usage_escaped}</div>
-                <div>{stats_escaped}</div>
-            </div>
-            <div class="tooltip-footer">Version: {version_escaped}</div>
-        </div>
-        """
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -314,35 +278,53 @@ def generate_html(tier_lists, game_version, characters_data):
         
         /* Character tooltip */
         .character .tooltip {{
-            max-width: 220px; /* Slightly wider for stats */
-            padding: 8px;
-            text-align: left;
-        }}
-        .tooltip-content {{
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }}
-        .tooltip-header {{
-            font-weight: bold;
-            font-size: 1.1rem;
-            border-bottom: 1px solid #4cc9f0;
-            padding-bottom: 4px;
-            margin-bottom: 4px;
-        }}
-        .tooltip-stats {{
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }}
-        .tooltip-footer {{
-            font-size: 0.8rem;
-            color: #a9a9a9;
-            font-style: italic;
-            margin-top: 4px;
+            visibility: hidden;
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            z-index: 100;
+            white-space: normal;
+            width: 220px;
+            max-width: 250px;
+            word-wrap: break-word;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border: 1px solid #4cc9f0;
         }}
         .character:hover .tooltip {{
             visibility: visible;
             opacity: 1;
+        }}
+        .tooltip-name {{
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #4cc9f0;
+        }}
+        .tooltip-roles {{
+            color: #ffdf7f;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }}
+        .tooltip-stats {{
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }}
+        .tooltip-footer {{
+            font-size: 0.8rem;
+            color: #aaa;
+            border-top: 1px solid #444;
+            padding-top: 8px;
+            margin-top: 8px;
         }}
         .character .tooltip::after {{
             content: "";
@@ -352,7 +334,7 @@ def generate_html(tier_lists, game_version, characters_data):
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+            border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
         }}
         
         footer {{
@@ -439,7 +421,7 @@ def generate_html(tier_lists, game_version, characters_data):
         "General Tier List": "general",
     }
 
-    for mode, role_data in tier_lists.items():
+    for mode, role_data_tier in tier_lists.items():
         tab_id = tab_ids.get(mode)
         if not tab_id:
             continue
@@ -462,11 +444,21 @@ def generate_html(tier_lists, game_version, characters_data):
                     <div class="tier-label tier-label-S">S</div>
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
-                            ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier S">' +
-                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
-                            f'<span>{char}</span></div>' 
-                            for char in role_data.get(role, {}).get('S', [])]) + 
+                            ''.join([f'''
+                            <div class="character">
+                                <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">{char}</div>
+                                    <div class="tooltip-roles">Roles: {", ".join(role_data.get(char, ["N/A"]))}</div>
+                                    <div class="tooltip-stats">
+                                        {get_stats_html(char, mode, characters_data)}
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v{game_version}</div>
+                                </div>
+                                <span>{char}</span>
+                            </div>
+                            ''' 
+                            for char in role_data_tier.get(role, {}).get('S', [])]) + 
                             '</div>' 
                         for role in ROLE_TYPES])}
                     </div>
@@ -477,11 +469,21 @@ def generate_html(tier_lists, game_version, characters_data):
                     <div class="tier-label tier-label-A">A</div>
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
-                            ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier A">' +
-                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
-                            f'<span>{char}</span></div>' 
-                            for char in role_data.get(role, {}).get('A', [])]) + 
+                            ''.join([f'''
+                            <div class="character">
+                                <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">{char}</div>
+                                    <div class="tooltip-roles">Roles: {", ".join(role_data.get(char, ["N/A"]))}</div>
+                                    <div class="tooltip-stats">
+                                        {get_stats_html(char, mode, characters_data)}
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v{game_version}</div>
+                                </div>
+                                <span>{char}</span>
+                            </div>
+                            ''' 
+                            for char in role_data_tier.get(role, {}).get('A', [])]) + 
                             '</div>' 
                         for role in ROLE_TYPES])}
                     </div>
@@ -492,11 +494,21 @@ def generate_html(tier_lists, game_version, characters_data):
                     <div class="tier-label tier-label-B">B</div>
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
-                            ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier B">' +
-                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
-                            f'<span>{char}</span></div>' 
-                            for char in role_data.get(role, {}).get('B', [])]) + 
+                            ''.join([f'''
+                            <div class="character">
+                                <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">{char}</div>
+                                    <div class="tooltip-roles">Roles: {", ".join(role_data.get(char, ["N/A"]))}</div>
+                                    <div class="tooltip-stats">
+                                        {get_stats_html(char, mode, characters_data)}
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v{game_version}</div>
+                                </div>
+                                <span>{char}</span>
+                            </div>
+                            ''' 
+                            for char in role_data_tier.get(role, {}).get('B', [])]) + 
                             '</div>' 
                         for role in ROLE_TYPES])}
                     </div>
@@ -507,26 +519,45 @@ def generate_html(tier_lists, game_version, characters_data):
                     <div class="tier-label tier-label-C">C</div>
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
-                            ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier C">' +
-                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
-                            f'<span>{char}</span></div>' 
-                            for char in role_data.get(role, {}).get('C', [])]) + 
+                            ''.join([f'''
+                            <div class="character">
+                                <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">{char}</div>
+                                    <div class="tooltip-roles">Roles: {", ".join(role_data.get(char, ["N/A"]))}</div>
+                                    <div class="tooltip-stats">
+                                        {get_stats_html(char, mode, characters_data)}
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v{game_version}</div>
+                                </div>
+                                <span>{char}</span>
+                            </div>
+                            ''' 
+                            for char in role_data_tier.get(role, {}).get('C', [])]) + 
                             '</div>' 
                         for role in ROLE_TYPES])}
                     </div>
                 </div>
                 
-                <!-- D Tier -->
                 <div class="tier-row-container">
                     <div class="tier-label tier-label-D">D</div>
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
-                            ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier D">' +
-                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
-                            f'<span>{char}</span></div>' 
-                            for char in role_data.get(role, {}).get('D', [])]) + 
+                            ''.join([f'''
+                            <div class="character">
+                                <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">{char}</div>
+                                    <div class="tooltip-roles">Roles: {", ".join(role_data.get(char, ["N/A"]))}</div>
+                                    <div class="tooltip-stats">
+                                        {get_stats_html(char, mode, characters_data)}
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v{game_version}</div>
+                                </div>
+                                <span>{char}</span>
+                            </div>
+                            ''' 
+                            for char in role_data_tier.get(role, {}).get('D', [])]) + 
                             '</div>' 
                         for role in ROLE_TYPES])}
                     </div>
@@ -581,6 +612,53 @@ def generate_html(tier_lists, game_version, characters_data):
     print(f"Visual tier list saved to {OUTPUT_FILE}")
 
 
+def get_stats_html(character, mode, characters_data):
+    """Generate HTML for character stats based on game mode"""
+    char_data = characters_data.get(character, {})
+
+    # Helper function to format numbers conditionally
+    def format_number(value, decimals):
+        if value == "N/A":
+            return "N/A"
+        rounded = round(value, decimals)
+        if rounded.is_integer():
+            return str(int(rounded))
+        return str(rounded)  # Python automatically trims trailing zeros
+
+    if mode == "Memory of Chaos":
+        moc_data = char_data.get("moc", {})
+        cycles = moc_data.get("cycles", "N/A")
+        usage = moc_data.get("usage", "N/A")
+        return f"""
+            Average Cycles: {format_number(cycles, 3)}<br>
+            Usage Rate: {format_number(usage, 2)}%
+        """
+    elif mode in ["Pure Fiction", "Apocalyptic Shadow"]:
+        mode_key = "pf" if mode == "Pure Fiction" else "as"
+        mode_data = char_data.get(mode_key, {})
+        score = mode_data.get("score", "N/A")
+        usage = mode_data.get("usage", "N/A")
+        return f"""
+            Average Score: {format_number(score, 0)}<br>
+            Usage Rate: {format_number(usage, 2)}%
+        """
+    elif mode == "General Tier List":
+        # Aggregate usage for all modes
+        all_usage = []
+        for mode_key in ["moc", "pf", "as"]:
+            usage = char_data.get(mode_key, {}).get("usage")
+            if usage is not None:
+                all_usage.append(usage)
+
+        if not all_usage:
+            return "Average Usage: N/A"
+
+        avg_usage = round(sum(all_usage) / len(all_usage), 2)
+        return f"Average Usage: {format_number(avg_usage, 2)}%"
+
+    return "Stats not available"
+
+
 if __name__ == "__main__":
     # Load dataset
     try:
@@ -610,7 +688,7 @@ if __name__ == "__main__":
     tier_lists = generate_role_based_tier_lists(characters_data, scores)
 
     # Generate the visual tier list
-    generate_html(tier_lists, game_version, characters_data)
+    generate_html(tier_lists, game_version, characters_data, role_data)
 
     # Copy favicon to public directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
