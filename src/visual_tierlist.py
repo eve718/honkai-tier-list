@@ -2,6 +2,7 @@ import json
 import os
 from datetime import datetime
 import shutil
+import html
 
 # Configuration
 DATASET_PATH = "hsr_dataset.json"
@@ -37,11 +38,47 @@ def sanitize_filename(name):
     return name.strip().lower().replace(" ", "_")
 
 
-def generate_html(tier_lists, game_version):
-    """Generate a visually appealing HTML tier list with tabbed interface and horizontal roles"""   
+def generate_html(tier_lists, game_version, characters_data):
+    """Generate a visually appealing HTML tier list with tabbed interface and horizontal roles"""
     # Get current ISO timestamp
     iso_timestamp = datetime.now().isoformat()
-    
+
+    # Helper function to generate tooltip content
+    def generate_tooltip(char, mode_name):
+        char_data = characters_data.get(char, {})
+        mode_data = char_data.get(mode_name, {})
+
+        # Extract stats with default values
+        usage = mode_data.get("usage", "N/A")
+        cycles = mode_data.get("cycles", "N/A")
+        score = mode_data.get("score", "N/A")
+
+        # Format stats display based on mode
+        if cycles == "Pure Fiction" or "Apocalyptic Shadow":
+            stats_display = f"Avg Score: {score}"
+        else:
+            stats_display = f"Avg Cycles: {cycles}"
+
+        # Format usage percentage
+        usage_display = f"Usage: {usage}%" if usage != "N/A" else "Usage: N/A"
+
+        # Escape special characters
+        char_escaped = html.escape(char)
+        stats_escaped = html.escape(stats_display)
+        usage_escaped = html.escape(usage_display)
+        version_escaped = html.escape(game_version)
+
+        return f"""
+        <div class="tooltip-content">
+            <div class="tooltip-header">{char_escaped}</div>
+            <div class="tooltip-stats">
+                <div>{usage_escaped}</div>
+                <div>{stats_escaped}</div>
+            </div>
+            <div class="tooltip-footer">Version: {version_escaped}</div>
+        </div>
+        """
+
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -280,24 +317,31 @@ def generate_html(tier_lists, game_version):
         
         /* Character tooltip */
         .character .tooltip {{
-            visibility: hidden;
-            position: absolute;
-            bottom: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.85);
-            color: #fff;
-            text-align: center;
-            padding: 6px 12px;
-            border-radius: 4px;
-            z-index: 100;
-            /* Remove text constraints to show full name */
-            white-space: normal;
-            max-width: 200px;
-            word-wrap: break-word;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
+            max-width: 220px; /* Slightly wider for stats */
+            padding: 8px;
+            text-align: left;
+        }}
+        .tooltip-content {{
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }}
+        .tooltip-header {{
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #4cc9f0;
+            padding-bottom: 4px;
+            margin-bottom: 4px;
+        }}
+        .tooltip-stats {{
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }}
+        .tooltip-footer {{
+            font-size: 0.8rem;
+            color: #a9a9a9;
+            font-style: italic;
+            margin-top: 4px;
         }}
         .character:hover .tooltip {{
             visibility: visible;
@@ -423,7 +467,7 @@ def generate_html(tier_lists, game_version):
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
                             f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier S">' +
-                            f'<span class="tooltip">{char}</span>' +
+                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('S', [])]) + 
                             '</div>' 
@@ -438,7 +482,7 @@ def generate_html(tier_lists, game_version):
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
                             f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier A">' +
-                            f'<span class="tooltip">{char}</span>' +
+                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('A', [])]) + 
                             '</div>' 
@@ -453,7 +497,7 @@ def generate_html(tier_lists, game_version):
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
                             f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier B">' +
-                            f'<span class="tooltip">{char}</span>' +
+                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('B', [])]) + 
                             '</div>' 
@@ -468,7 +512,7 @@ def generate_html(tier_lists, game_version):
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
                             f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier C">' +
-                            f'<span class="tooltip">{char}</span>' +
+                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('C', [])]) + 
                             '</div>' 
@@ -483,7 +527,7 @@ def generate_html(tier_lists, game_version):
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
                             f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier D">' +
-                            f'<span class="tooltip">{char}</span>' +
+                            f'<span class="tooltip">{generate_tooltip(char, mode)}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('D', [])]) + 
                             '</div>' 
@@ -569,7 +613,7 @@ if __name__ == "__main__":
     tier_lists = generate_role_based_tier_lists(characters_data, scores)
 
     # Generate the visual tier list
-    generate_html(tier_lists, game_version)
+    generate_html(tier_lists, game_version, characters_data)
 
     # Copy favicon to public directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -581,7 +625,7 @@ if __name__ == "__main__":
         print(f"Copied favicon.png to public directory")
     else:
         print(f"Warning: favicon.png not found at {favicon_src}")
-    
+
     # Add this after generating HTML in visual_tierlist.py
     SITEMAP = """<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -592,11 +636,15 @@ if __name__ == "__main__":
             <priority>1.0</priority>
         </url>
     </urlset>
-    """.format(date=datetime.now().strftime("%Y-%m-%d"))
+    """.format(
+        date=datetime.now().strftime("%Y-%m-%d")
+    )
 
     with open("../public/sitemap.xml", "w") as f:
         f.write(SITEMAP)
-        
+
     # Add this to your script
     with open("../public/robots.txt", "w") as f:
-        f.write("User-agent: *\nAllow: /\n\nSitemap: https://my-hsr-tierlist.netlify.app/sitemap.xml")
+        f.write(
+            "User-agent: *\nAllow: /\n\nSitemap: https://my-hsr-tierlist.netlify.app/sitemap.xml"
+        )
