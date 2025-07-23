@@ -37,14 +37,34 @@ def sanitize_filename(name):
     return name.strip().lower().replace(" ", "_")
 
 
-def generate_html(tier_lists):
-    """Generate a visually appealing HTML tier list with tabbed interface and horizontal roles"""
+def generate_html(tier_lists, game_version):
+    """Generate a visually appealing HTML tier list with tabbed interface and horizontal roles"""   
+    # Get current ISO timestamp
+    iso_timestamp = datetime.now().isoformat()
+    
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Add SEO tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honkai: Star Rail Tier List</title>
+    <title>Honkai: Star Rail Tier List {game_version}</title>
+    <meta name="description" content="Comprehensive Honkai: Star Rail tier list for {game_version}. Rankings for Memory of Chaos, Pure Fiction, and Apocalyptic Shadow based on community data. Updated weekly.">
+    <meta name="keywords" content="honkai star rail, tier list, hsr tier list, memory of chaos, pure fiction, apocalyptic shadow, {game_version}, character rankings">
+    
+    <!-- Open Graph/Facebook -->
+    <meta property="og:title" content="Honkai Star Rail Tier List {game_version}">
+    <meta property="og:description" content="Updated tier list rankings for Honkai: Star Rail {game_version}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://my-hsr-tierlist.netlify.app">
+    <meta property="og:image" content="https://my-hsr-tierlist.netlify.app/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Honkai Star Rail Tier List {game_version}">
+    <meta name="twitter:description" content="Updated rankings for Memory of Chaos, Pure Fiction and Apocalyptic Shadow">
+    <meta name="twitter:image" content="https://my-hsr-tierlist.netlify.app/images/twitter-card.jpg">
+    
     <!-- Favicon links -->
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="favicon.png">
@@ -357,7 +377,9 @@ def generate_html(tier_lists):
     <div class="container">
         <header>
             <h1>Honkai: Star Rail Tier List</h1>
-            <div class="timestamp">Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</div>
+            <div class="timestamp">
+                Based on game version {game_version} | Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+            </div>
         </header>
         
         <div class="tabs">
@@ -400,7 +422,7 @@ def generate_html(tier_lists):
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">' +
+                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier S">' +
                             f'<span class="tooltip">{char}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('S', [])]) + 
@@ -415,7 +437,7 @@ def generate_html(tier_lists):
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">' +
+                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier A">' +
                             f'<span class="tooltip">{char}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('A', [])]) + 
@@ -430,7 +452,7 @@ def generate_html(tier_lists):
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">' +
+                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier B">' +
                             f'<span class="tooltip">{char}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('B', [])]) + 
@@ -445,7 +467,7 @@ def generate_html(tier_lists):
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">' +
+                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier C">' +
                             f'<span class="tooltip">{char}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('C', [])]) + 
@@ -460,7 +482,7 @@ def generate_html(tier_lists):
                     <div class="role-containers">
                         {"".join([f'<div class="role-container">' + 
                             ''.join([f'<div class="character">' +
-                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">' +
+                            f'<img src="images/{sanitize_filename(char)}_icon.png" alt="{char} Honkai Star Rail character - Tier D">' +
                             f'<span class="tooltip">{char}</span>' +
                             f'<span>{char}</span></div>' 
                             for char in role_data.get(role, {}).get('D', [])]) + 
@@ -473,17 +495,17 @@ def generate_html(tier_lists):
 """
 
     html += f"""
-        <footer>
-            <p>Created with Honkai Star Rail Tier List Generator | Data updated weekly</p>
-            <p>
-                <a href="{GITHUB_REPO_URL}" target="_blank" style="color: #4cc9f0; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                    </svg>
-                    View on GitHub
-                </a>
-            </p>
-        </footer>
+            <footer>
+                <p>Created with Honkai Star Rail Tier List Generator | Data updated weekly</p>
+                <p>
+                    <a href="{GITHUB_REPO_URL}" target="_blank" style="color: #4cc9f0; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </p>
+            </footer>
     </div>
     
     <script>
@@ -528,6 +550,10 @@ if __name__ == "__main__":
         print("Please run update_data.py first to create a dataset.")
         exit(1)
 
+    # Extract game version
+    game_version = data.get("version", "Unknown")
+    characters_data = data.get("characters", {})
+
     # Load role definitions
     try:
         with open(ROLES_PATH) as f:
@@ -539,11 +565,11 @@ if __name__ == "__main__":
     # Calculate scores (using your existing function from tierlist.py)
     from tierlist import calculate_scores, generate_role_based_tier_lists
 
-    scores = calculate_scores(data)
-    tier_lists = generate_role_based_tier_lists(data, scores)
+    scores = calculate_scores(characters_data)
+    tier_lists = generate_role_based_tier_lists(characters_data, scores)
 
     # Generate the visual tier list
-    generate_html(tier_lists)
+    generate_html(tier_lists, game_version)
 
     # Copy favicon to public directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -555,3 +581,22 @@ if __name__ == "__main__":
         print(f"Copied favicon.png to public directory")
     else:
         print(f"Warning: favicon.png not found at {favicon_src}")
+    
+    # Add this after generating HTML in visual_tierlist.py
+    SITEMAP = """<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <url>
+            <loc>https://your-site-url.netlify.app/</loc>
+            <lastmod>{date}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+    </urlset>
+    """.format(date=datetime.now().strftime("%Y-%m-%d"))
+
+    with open("../public/sitemap.xml", "w") as f:
+        f.write(SITEMAP)
+        
+    # Add this to your script
+    with open("../public/robots.txt", "w") as f:
+        f.write("User-agent: *\nAllow: /\n\nSitemap: https://your-site-url.netlify.app/sitemap.xml")

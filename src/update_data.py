@@ -57,6 +57,11 @@ def update_dataset(new_data):
         shutil.copy2(DATASET_PATH, archive_path)
         print(f"Archived current dataset to {archive_path}")
 
+    new_data = {
+        "version": VERSION,
+        "last_updated": datetime.now().isoformat(),
+        "characters": new_data,  # Your existing character data
+    }
     # Save new dataset
     with open(DATASET_PATH, "w") as f:
         json.dump(new_data, f, indent=2)

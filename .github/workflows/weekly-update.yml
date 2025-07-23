@@ -29,12 +29,13 @@ jobs:
 
       - name: Commit changes
         run: |
+          VERSION=$(python -c "import json; f=open('src/hsr_dataset.json'); data=json.load(f); print(data.get('version', 'unknown')); f.close()")
           git config --global user.name 'Automated Update'
           git config --global user.email 'actions@users.noreply.github.com'
           git add src/hsr_dataset.json
           git add src/dataset_archive/*.json  # Add this line to commit archived datasets
           git add src/dataset_archive/.gitkeep  # Preserve directory structure
-          git diff --quiet && git diff --staged --quiet || git commit -m "Automated weekly data update"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Automated update for version $VERSION"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
