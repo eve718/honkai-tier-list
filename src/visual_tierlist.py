@@ -586,7 +586,7 @@ if __name__ == "__main__":
     SITEMAP = """<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
-            <loc>https://your-site-url.netlify.app/</loc>
+            <loc>https://my-hsr-tierlist.netlify.app/</loc>
             <lastmod>{date}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
@@ -599,4 +599,4 @@ if __name__ == "__main__":
         
     # Add this to your script
     with open("../public/robots.txt", "w") as f:
-        f.write("User-agent: *\nAllow: /\n\nSitemap: https://your-site-url.netlify.app/sitemap.xml")
+        f.write("User-agent: *\nAllow: /\n\nSitemap: https://my-hsr-tierlist.netlify.app/sitemap.xml")
