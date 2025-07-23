@@ -2,7 +2,6 @@ import json
 import os
 from datetime import datetime
 import shutil
-import html
 
 # Configuration
 DATASET_PATH = "hsr_dataset.json"
@@ -40,8 +39,6 @@ def sanitize_filename(name):
 
 def generate_html(tier_lists, game_version, characters_data):
     """Generate a visually appealing HTML tier list with tabbed interface and horizontal roles"""
-    # Get current ISO timestamp
-    iso_timestamp = datetime.now().isoformat()
 
     # Helper function to generate tooltip content
     def generate_tooltip(char, mode_name):
