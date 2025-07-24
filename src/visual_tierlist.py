@@ -467,6 +467,11 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
             font-family: 'Segoe UI', sans-serif;
         }}
         
+        @media (min-width: 1201px) {{
+            .mobile-role-header {{
+                display: none;  /* Hide on desktop */
+            }}
+        }}
         @media (max-width: 1200px) {{
             .tier-row-container {{
                 flex-direction: column;
@@ -492,6 +497,23 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
                 flex: none;
                 width: calc(50% - 10px);
             }}
+            .role-headers {{
+                display: none !important;  /* Hide the main role headers */
+            }}
+            .mobile-role-header {{
+                display: block;
+                text-align: center;
+                font-size: 1.2rem;
+                color: #4cc9f0;
+                padding: 5px 0;
+                border-bottom: 1px solid #4361ee;
+                margin-bottom: 10px;
+                font-weight: 600;
+            }}
+            
+            .role-container {{
+                margin-bottom: 20px;
+            }}
         }}
         @media (max-width: 768px) {{
             .data-note {{
@@ -509,7 +531,7 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
                 border-radius: 5px;
             }}
             .character {{
-                max-width: 100px;
+                width: 80px;
             }}
             .character span {{
                 font-size: 0.8rem;
@@ -517,6 +539,12 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
             .role-header {{
                 width: 100%;
                 font-size: 1.2rem;
+            }}
+            .tier-row-container {{
+                margin-bottom: 15px;
+            }}           
+            .role-container {{
+                padding: 10px;
             }}
         }}
     </style>
@@ -573,8 +601,9 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
                 <!-- S Tier -->
                 <div class="tier-row-container">
                     <div class="tier-label tier-label-S">S</div>
-                    <div class="role-containers">
-                        {"".join([f'<div class="role-container">' + 
+                    <div class="role-containers" data-tier="S">
+                        {"".join([f'<div class="mobile-role-header">{role}</div>' +
+                                    '<div class="role-container">' + 
                             ''.join([f'''
                             <div class="character">
                                 <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
@@ -598,8 +627,9 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
                 <!-- A Tier -->
                 <div class="tier-row-container">
                     <div class="tier-label tier-label-A">A</div>
-                    <div class="role-containers">
-                        {"".join([f'<div class="role-container">' + 
+                    <div class="role-containers" data-tier="A">
+                        {"".join([f'<div class="mobile-role-header">{role}</div>' +
+                                    '<div class="role-container">' +  
                             ''.join([f'''
                             <div class="character">
                                 <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
@@ -623,8 +653,9 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
                 <!-- B Tier -->
                 <div class="tier-row-container">
                     <div class="tier-label tier-label-B">B</div>
-                    <div class="role-containers">
-                        {"".join([f'<div class="role-container">' + 
+                    <div class="role-containers" data-tier="B">
+                        {"".join([f'<div class="mobile-role-header">{role}</div>' + 
+                                    '<div class="role-container">' + 
                             ''.join([f'''
                             <div class="character">
                                 <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
@@ -648,8 +679,9 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
                 <!-- C Tier -->
                 <div class="tier-row-container">
                     <div class="tier-label tier-label-C">C</div>
-                    <div class="role-containers">
-                        {"".join([f'<div class="role-container">' + 
+                    <div class="role-containers" data-tier="C">
+                        {"".join([f'<div class="mobile-role-header">{role}</div>' +  
+                                    '<div class="role-container">' +  
                             ''.join([f'''
                             <div class="character">
                                 <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
@@ -672,8 +704,9 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
                 
                 <div class="tier-row-container">
                     <div class="tier-label tier-label-D">D</div>
-                    <div class="role-containers">
-                        {"".join([f'<div class="role-container">' + 
+                    <div class="role-containers" data-tier="D">
+                        {"".join([f'<div class="mobile-role-header">{role}</div>' + 
+                                    '<div class="role-container">' + 
                             ''.join([f'''
                             <div class="character">
                                 <img src="images/{sanitize_filename(char)}_icon.png" alt="{char}">
