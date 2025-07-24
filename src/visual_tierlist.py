@@ -40,6 +40,124 @@ def sanitize_filename(name):
 def generate_html(tier_lists, game_version, characters_data, role_data):
     """Generate a visually appealing HTML tier list with tabbed interface and horizontal roles"""
 
+    collapsible_methodology = """
+    <div class="methodology-collapsible">
+        <h3 class="methodology-header">
+            <span class="header-text">How Our Tier List is Calculated</span>
+            <button class="toggle-methodology">▲</button>
+        </h3>
+        <div class="methodology-content">
+            <p>Our tier list is generated automatically using the following methodology:</p>
+            <ol>
+                <li><strong>Data Collection:</strong> We collect anonymized player submissions for Memory of Chaos, Pure Fiction, and Apocalyptic Shadow from a public GitHub repository.</li>
+                <li><strong>Filtering:</strong> Only the highest difficulty stages (Floor 12 for MoC, Floor 4 for PF/AS) with 3-star clears are considered.</li>
+                <li><strong>Character Performance Metrics:</strong>
+                    <ul>
+                        <li>Memory of Chaos: Average cycles taken to clear</li>
+                        <li>Pure Fiction/Apocalyptic Shadow: Average score achieved</li>
+                    </ul>
+                </li>
+                <li><strong>Usage Rate:</strong> Percentage of teams that included the character</li>
+                <li><strong>Scoring Formula:</strong>
+                    <p>Final Score = (Performance Metric × 70%) + (Usage Rate × 30%)</p>
+                    <p>Performance is normalized to a 0-10 scale, and usage rate is capped at 95% to prevent outliers from dominating.</p>
+                </li>
+                <li><strong>Tier Assignment:</strong> Characters are grouped by role and assigned to tiers based on score distribution:
+                    <ul>
+                        <li>S-tier: Top 10%</li>
+                        <li>A-tier: Next 20%</li>
+                        <li>B-tier: Next 30%</li>
+                        <li>C-tier: Next 30%</li>
+                        <li>D-tier: Remaining 10% and characters with insufficient data</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>Characters with usage rates below 0.5% are considered to have insufficient data and are placed in D-tier.</p>
+        </div>
+    </div>
+    """
+
+    methodology_css = """
+    .methodology-collapsible {
+        background: rgba(30, 30, 46, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px auto 0;
+        max-width: 1000px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        text-align: left;
+    }
+    .methodology-header {
+        color: #4cc9f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 0;
+        padding: 10px 0;
+    }
+    .header-text {
+        padding-top: 5px;
+    }
+    .methodology-header button {
+        background: none;
+        border: none;
+        color: #4cc9f0;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        padding: 0;
+        margin: 0;
+    }
+    .methodology-content {
+        overflow: hidden;
+        text-align: left;
+        padding-top: 15px;
+        margin-top: 5px;
+        border-top: 1px solid rgba(76, 201, 240, 0.3);
+        /* Smooth transform animation */
+        transform: scaleY(1);
+        transform-origin: top;
+        opacity: 1;
+        max-height: 1000px;
+        transition: 
+            transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+            opacity 0.3s ease,
+            max-height 0.4s ease,
+            padding-top 0.4s ease,
+            margin-top 0.4s ease;
+    }
+    .collapsed .methodology-content {
+        /* Simultaneous scaling and fading */
+        transform: scaleY(0);
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        margin-top: 0;
+        border-top: none;
+    }
+    .collapsed .toggle-methodology {
+        transform: rotate(180deg);
+    }
+    .methodology-content ol, .methodology-content ul {
+        margin-left: 20px;
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    .methodology-content li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+        text-align: left;
+    }
+    .methodology-content strong {
+        color: #ffbf7f;
+    }
+    .methodology-content p {
+        margin-bottom: 10px;
+        text-align: left;
+    }
+"""
+
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -338,17 +456,7 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
             padding-top: 8px;
             margin-top: 8px;
         }}
-        .character .tooltip::after {{
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
-        }}
-        
+        {methodology_css}
         footer {{
             text-align: center;
             margin-top: 20px;
@@ -420,6 +528,7 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
             <div class="timestamp">
                 Based on game version {game_version} | Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
             </div>
+            {collapsible_methodology}
             <!-- Add note about missing characters -->
             <div class="data-note">
                 Note: Some characters are not displayed because there's insufficient data available 
@@ -590,7 +699,7 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
 
     html += f"""
             <footer>
-                <p>Created with Honkai Star Rail Tier List Generator | Data updated weekly</p>
+                <p>Data-Driven Tier List | Data updated weekly</p>
                 <p>
                     <a href="{GITHUB_REPO_URL}" target="_blank" style="color: #4cc9f0; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -618,6 +727,14 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
                 document.getElementById(tabId).classList.add('active');
             }});
         }});
+        // Methodology toggle functionality
+        const methodologyHeader = document.querySelector('.methodology-header');
+        if (methodologyHeader) {{
+            methodologyHeader.addEventListener('click', () => {{
+                const collapsible = methodologyHeader.closest('.methodology-collapsible');
+                collapsible.classList.toggle('collapsed');
+            }});
+        }}
         document.querySelectorAll('img').forEach(img => {{
             img.onerror = () => {{
             img.alt = "Image missing!";

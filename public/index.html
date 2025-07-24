@@ -296,17 +296,86 @@
             padding-top: 8px;
             margin-top: 8px;
         }
-        .character .tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
-        }
         
+    .methodology-collapsible {
+        background: rgba(30, 30, 46, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px auto 0;
+        max-width: 1000px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        text-align: left;
+    }
+    .methodology-header {
+        color: #4cc9f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 0;
+        padding: 10px 0;
+    }
+    .header-text {
+        padding-top: 5px;
+    }
+    .methodology-header button {
+        background: none;
+        border: none;
+        color: #4cc9f0;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        padding: 0;
+        margin: 0;
+    }
+    .methodology-content {
+        overflow: hidden;
+        text-align: left;
+        padding-top: 15px;
+        margin-top: 5px;
+        border-top: 1px solid rgba(76, 201, 240, 0.3);
+        /* Smooth transform animation */
+        transform: scaleY(1);
+        transform-origin: top;
+        opacity: 1;
+        max-height: 1000px;
+        transition: 
+            transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+            opacity 0.3s ease,
+            max-height 0.4s ease,
+            padding-top 0.4s ease,
+            margin-top 0.4s ease;
+    }
+    .collapsed .methodology-content {
+        /* Simultaneous scaling and fading */
+        transform: scaleY(0);
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        margin-top: 0;
+        border-top: none;
+    }
+    .collapsed .toggle-methodology {
+        transform: rotate(180deg);
+    }
+    .methodology-content ol, .methodology-content ul {
+        margin-left: 20px;
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    .methodology-content li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+        text-align: left;
+    }
+    .methodology-content strong {
+        color: #ffbf7f;
+    }
+    .methodology-content p {
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
         footer {
             text-align: center;
             margin-top: 20px;
@@ -376,8 +445,44 @@
         <header>
             <h1>Honkai: Star Rail Tier List</h1>
             <div class="timestamp">
-                Based on game version 3.4.1 | Generated on 2025-07-24 11:35:51
+                Based on game version 3.4.1 | Generated on 2025-07-24 13:00:46
             </div>
+            
+    <div class="methodology-collapsible">
+        <h3 class="methodology-header">
+            <span class="header-text">How Our Tier List is Calculated</span>
+            <button class="toggle-methodology">▲</button>
+        </h3>
+        <div class="methodology-content">
+            <p>Our tier list is generated automatically using the following methodology:</p>
+            <ol>
+                <li><strong>Data Collection:</strong> We collect anonymized player submissions for Memory of Chaos, Pure Fiction, and Apocalyptic Shadow from a public GitHub repository.</li>
+                <li><strong>Filtering:</strong> Only the highest difficulty stages (Floor 12 for MoC, Floor 4 for PF/AS) with 3-star clears are considered.</li>
+                <li><strong>Character Performance Metrics:</strong>
+                    <ul>
+                        <li>Memory of Chaos: Average cycles taken to clear</li>
+                        <li>Pure Fiction/Apocalyptic Shadow: Average score achieved</li>
+                    </ul>
+                </li>
+                <li><strong>Usage Rate:</strong> Percentage of teams that included the character</li>
+                <li><strong>Scoring Formula:</strong>
+                    <p>Final Score = (Performance Metric × 70%) + (Usage Rate × 30%)</p>
+                    <p>Performance is normalized to a 0-10 scale, and usage rate is capped at 95% to prevent outliers from dominating.</p>
+                </li>
+                <li><strong>Tier Assignment:</strong> Characters are grouped by role and assigned to tiers based on score distribution:
+                    <ul>
+                        <li>S-tier: Top 10%</li>
+                        <li>A-tier: Next 20%</li>
+                        <li>B-tier: Next 30%</li>
+                        <li>C-tier: Next 30%</li>
+                        <li>D-tier: Remaining 10% and characters with insufficient data</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>Characters with usage rates below 0.5% are considered to have insufficient data and are placed in D-tier.</p>
+        </div>
+    </div>
+    
             <!-- Add note about missing characters -->
             <div class="data-note">
                 Note: Some characters are not displayed because there's insufficient data available 
@@ -1273,6 +1378,22 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/dr._ratio_icon.png" alt="Dr. Ratio">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Dr. Ratio</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Cycles: 6.362<br>
+            Usage Rate: 0.45%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Dr. Ratio</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/seele_icon.png" alt="Seele">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Seele</div>
@@ -1286,6 +1407,70 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Seele</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/yanqing_icon.png" alt="Yanqing">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Yanqing</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Cycles: 9<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Yanqing</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/arlan_icon.png" alt="Arlan">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Arlan</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Cycles: 2<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Arlan</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/dan_heng_icon.png" alt="Dan Heng">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Dan Heng</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Cycles: 6.5<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Dan Heng</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/xueyi_icon.png" alt="Xueyi">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Xueyi</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Cycles: 7.857<br>
+            Usage Rate: 0.05%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Xueyi</span>
                             </div>
                             
                             <div class="character">
@@ -1321,35 +1506,19 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/hook_icon.png" alt="Hook">
+                                <img src="images/qingque_icon.png" alt="Qingque">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Hook</div>
+                                    <div class="tooltip-name">Qingque</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
                                         
-            Average Cycles: 5.333<br>
-            Usage Rate: 0.02%
+            Average Cycles: 6.963<br>
+            Usage Rate: 0.18%
         
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Hook</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/xueyi_icon.png" alt="Xueyi">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Xueyi</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Cycles: 7.857<br>
-            Usage Rate: 0.05%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Xueyi</span>
+                                <span>Qingque</span>
                             </div>
                             
                             <div class="character">
@@ -1369,67 +1538,19 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/yanqing_icon.png" alt="Yanqing">
+                                <img src="images/hook_icon.png" alt="Hook">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Yanqing</div>
+                                    <div class="tooltip-name">Hook</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
                                         
-            Average Cycles: 9<br>
-            Usage Rate: 0.01%
+            Average Cycles: 5.333<br>
+            Usage Rate: 0.02%
         
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Yanqing</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/qingque_icon.png" alt="Qingque">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Qingque</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Cycles: 6.963<br>
-            Usage Rate: 0.18%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Qingque</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/dr._ratio_icon.png" alt="Dr. Ratio">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Dr. Ratio</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Cycles: 6.362<br>
-            Usage Rate: 0.45%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Dr. Ratio</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/dan_heng_icon.png" alt="Dan Heng">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Dan Heng</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Cycles: 6.5<br>
-            Usage Rate: 0.01%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Dan Heng</span>
+                                <span>Hook</span>
                             </div>
                             
                             <div class="character">
@@ -1446,22 +1567,6 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Luka</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/arlan_icon.png" alt="Arlan">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Arlan</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Cycles: 2<br>
-            Usage Rate: 0.01%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Arlan</span>
                             </div>
                             </div><div class="role-container">
                             <div class="character">
@@ -1529,6 +1634,22 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/asta_icon.png" alt="Asta">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Asta</div>
+                                    <div class="tooltip-roles">Roles: Amplifier</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Cycles: 4<br>
+            Usage Rate: 0.05%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Asta</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/yukong_icon.png" alt="Yukong">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Yukong</div>
@@ -1575,55 +1696,7 @@
                                 </div>
                                 <span>Guinaifen</span>
                             </div>
-                            
-                            <div class="character">
-                                <img src="images/asta_icon.png" alt="Asta">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Asta</div>
-                                    <div class="tooltip-roles">Roles: Amplifier</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Cycles: 4<br>
-            Usage Rate: 0.05%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Asta</span>
-                            </div>
                             </div><div class="role-container">
-                            <div class="character">
-                                <img src="images/ice_march_7th_icon.png" alt="Ice March 7th">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Ice March 7th</div>
-                                    <div class="tooltip-roles">Roles: Sustain</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Cycles: 3.6<br>
-            Usage Rate: 0.03%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Ice March 7th</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/fire_trailblazer_icon.png" alt="Fire Trailblazer">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Fire Trailblazer</div>
-                                    <div class="tooltip-roles">Roles: Sustain</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Cycles: 5<br>
-            Usage Rate: 0.01%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Fire Trailblazer</span>
-                            </div>
-                            
                             <div class="character">
                                 <img src="images/gepard_icon.png" alt="Gepard">
                                 <div class="tooltip">
@@ -1641,6 +1714,22 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/ice_march_7th_icon.png" alt="Ice March 7th">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Ice March 7th</div>
+                                    <div class="tooltip-roles">Roles: Sustain</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Cycles: 3.6<br>
+            Usage Rate: 0.03%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Ice March 7th</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/natasha_icon.png" alt="Natasha">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Natasha</div>
@@ -1654,6 +1743,22 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Natasha</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/fire_trailblazer_icon.png" alt="Fire Trailblazer">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Fire Trailblazer</div>
+                                    <div class="tooltip-roles">Roles: Sustain</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Cycles: 5<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Fire Trailblazer</span>
                             </div>
                             </div>
                     </div>
@@ -2510,6 +2615,22 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/dr._ratio_icon.png" alt="Dr. Ratio">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Dr. Ratio</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 30926<br>
+            Usage Rate: 0.04%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Dr. Ratio</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/seele_icon.png" alt="Seele">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Seele</div>
@@ -2523,6 +2644,38 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Seele</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/arlan_icon.png" alt="Arlan">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Arlan</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 40000<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Arlan</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/xueyi_icon.png" alt="Xueyi">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Xueyi</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 25867<br>
+            Usage Rate: 0.05%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Xueyi</span>
                             </div>
                             
                             <div class="character">
@@ -2558,38 +2711,6 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/hook_icon.png" alt="Hook">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Hook</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 30440<br>
-            Usage Rate: 0.01%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Hook</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/xueyi_icon.png" alt="Xueyi">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Xueyi</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 25867<br>
-            Usage Rate: 0.05%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Xueyi</span>
-                            </div>
-                            
-                            <div class="character">
                                 <img src="images/qingque_icon.png" alt="Qingque">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Qingque</div>
@@ -2606,35 +2727,19 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/dr._ratio_icon.png" alt="Dr. Ratio">
+                                <img src="images/hook_icon.png" alt="Hook">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Dr. Ratio</div>
+                                    <div class="tooltip-name">Hook</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
                                         
-            Average Score: 30926<br>
-            Usage Rate: 0.04%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Dr. Ratio</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/arlan_icon.png" alt="Arlan">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Arlan</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 40000<br>
+            Average Score: 30440<br>
             Usage Rate: 0.01%
         
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Arlan</span>
+                                <span>Hook</span>
                             </div>
                             </div><div class="role-container">
                             <div class="character">
@@ -2718,6 +2823,22 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/asta_icon.png" alt="Asta">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Asta</div>
+                                    <div class="tooltip-roles">Roles: Amplifier</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 31316<br>
+            Usage Rate: 0.05%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Asta</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/yukong_icon.png" alt="Yukong">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Yukong</div>
@@ -2764,55 +2885,7 @@
                                 </div>
                                 <span>Guinaifen</span>
                             </div>
-                            
-                            <div class="character">
-                                <img src="images/asta_icon.png" alt="Asta">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Asta</div>
-                                    <div class="tooltip-roles">Roles: Amplifier</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 31316<br>
-            Usage Rate: 0.05%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Asta</span>
-                            </div>
                             </div><div class="role-container">
-                            <div class="character">
-                                <img src="images/ice_march_7th_icon.png" alt="Ice March 7th">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Ice March 7th</div>
-                                    <div class="tooltip-roles">Roles: Sustain</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 35757<br>
-            Usage Rate: 0.08%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Ice March 7th</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/fire_trailblazer_icon.png" alt="Fire Trailblazer">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Fire Trailblazer</div>
-                                    <div class="tooltip-roles">Roles: Sustain</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 39720<br>
-            Usage Rate: 0.01%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Fire Trailblazer</span>
-                            </div>
-                            
                             <div class="character">
                                 <img src="images/gepard_icon.png" alt="Gepard">
                                 <div class="tooltip">
@@ -2830,6 +2903,22 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/ice_march_7th_icon.png" alt="Ice March 7th">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Ice March 7th</div>
+                                    <div class="tooltip-roles">Roles: Sustain</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 35757<br>
+            Usage Rate: 0.08%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Ice March 7th</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/natasha_icon.png" alt="Natasha">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Natasha</div>
@@ -2843,6 +2932,22 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Natasha</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/fire_trailblazer_icon.png" alt="Fire Trailblazer">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Fire Trailblazer</div>
+                                    <div class="tooltip-roles">Roles: Sustain</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 39720<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Fire Trailblazer</span>
                             </div>
                             </div>
                     </div>
@@ -3731,19 +3836,19 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/misha_icon.png" alt="Misha">
+                                <img src="images/dr._ratio_icon.png" alt="Dr. Ratio">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Misha</div>
+                                    <div class="tooltip-name">Dr. Ratio</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
                                         
-            Average Score: 3353<br>
-            Usage Rate: 0.01%
+            Average Score: 3398<br>
+            Usage Rate: 0.1%
         
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Misha</span>
+                                <span>Dr. Ratio</span>
                             </div>
                             
                             <div class="character">
@@ -3760,6 +3865,54 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Seele</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/yanqing_icon.png" alt="Yanqing">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Yanqing</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 3610<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Yanqing</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/misha_icon.png" alt="Misha">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Misha</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 3353<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Misha</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/xueyi_icon.png" alt="Xueyi">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Xueyi</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 3600<br>
+            Usage Rate: 0.04%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Xueyi</span>
                             </div>
                             
                             <div class="character">
@@ -3795,35 +3948,19 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/hook_icon.png" alt="Hook">
+                                <img src="images/qingque_icon.png" alt="Qingque">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Hook</div>
+                                    <div class="tooltip-name">Qingque</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
                                         
-            Average Score: 3304<br>
-            Usage Rate: 0.04%
+            Average Score: 3383<br>
+            Usage Rate: 0.13%
         
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Hook</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/xueyi_icon.png" alt="Xueyi">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Xueyi</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 3600<br>
-            Usage Rate: 0.04%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Xueyi</span>
+                                <span>Qingque</span>
                             </div>
                             
                             <div class="character">
@@ -3843,51 +3980,19 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/yanqing_icon.png" alt="Yanqing">
+                                <img src="images/hook_icon.png" alt="Hook">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Yanqing</div>
+                                    <div class="tooltip-name">Hook</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
                                         
-            Average Score: 3610<br>
-            Usage Rate: 0.01%
+            Average Score: 3304<br>
+            Usage Rate: 0.04%
         
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Yanqing</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/qingque_icon.png" alt="Qingque">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Qingque</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 3383<br>
-            Usage Rate: 0.13%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Qingque</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/dr._ratio_icon.png" alt="Dr. Ratio">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Dr. Ratio</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 3398<br>
-            Usage Rate: 0.1%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Dr. Ratio</span>
+                                <span>Hook</span>
                             </div>
                             
                             <div class="character">
@@ -3955,6 +4060,22 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/asta_icon.png" alt="Asta">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Asta</div>
+                                    <div class="tooltip-roles">Roles: Amplifier</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 3565<br>
+            Usage Rate: 0.11%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Asta</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/yukong_icon.png" alt="Yukong">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Yukong</div>
@@ -4001,55 +4122,7 @@
                                 </div>
                                 <span>Guinaifen</span>
                             </div>
-                            
-                            <div class="character">
-                                <img src="images/asta_icon.png" alt="Asta">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Asta</div>
-                                    <div class="tooltip-roles">Roles: Amplifier</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 3565<br>
-            Usage Rate: 0.11%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Asta</span>
-                            </div>
                             </div><div class="role-container">
-                            <div class="character">
-                                <img src="images/ice_march_7th_icon.png" alt="Ice March 7th">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Ice March 7th</div>
-                                    <div class="tooltip-roles">Roles: Sustain</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 3460<br>
-            Usage Rate: 0.04%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Ice March 7th</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/fire_trailblazer_icon.png" alt="Fire Trailblazer">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Fire Trailblazer</div>
-                                    <div class="tooltip-roles">Roles: Sustain</div>
-                                    <div class="tooltip-stats">
-                                        
-            Average Score: 3778<br>
-            Usage Rate: 0.01%
-        
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Fire Trailblazer</span>
-                            </div>
-                            
                             <div class="character">
                                 <img src="images/gepard_icon.png" alt="Gepard">
                                 <div class="tooltip">
@@ -4067,6 +4140,22 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/ice_march_7th_icon.png" alt="Ice March 7th">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Ice March 7th</div>
+                                    <div class="tooltip-roles">Roles: Sustain</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 3460<br>
+            Usage Rate: 0.04%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Ice March 7th</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/natasha_icon.png" alt="Natasha">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Natasha</div>
@@ -4080,6 +4169,22 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Natasha</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/fire_trailblazer_icon.png" alt="Fire Trailblazer">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Fire Trailblazer</div>
+                                    <div class="tooltip-roles">Roles: Sustain</div>
+                                    <div class="tooltip-stats">
+                                        
+            Average Score: 3778<br>
+            Usage Rate: 0.01%
+        
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Fire Trailblazer</span>
                             </div>
                             </div>
                     </div>
@@ -4812,16 +4917,16 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/misha_icon.png" alt="Misha">
+                                <img src="images/dr._ratio_icon.png" alt="Dr. Ratio">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Misha</div>
+                                    <div class="tooltip-name">Dr. Ratio</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
-                                        Average Usage: 0.01%
+                                        Average Usage: 0.2%
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Misha</span>
+                                <span>Dr. Ratio</span>
                             </div>
                             
                             <div class="character">
@@ -4835,6 +4940,71 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Seele</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/yanqing_icon.png" alt="Yanqing">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Yanqing</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        Average Usage: 0.01%
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Yanqing</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/arlan_icon.png" alt="Arlan">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Arlan</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        Average Usage: 0.01%
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Arlan</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/dan_heng_icon.png" alt="Dan Heng">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Dan Heng</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        Average Usage: 0.01%
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Dan Heng</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/misha_icon.png" alt="Misha">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Misha</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        Average Usage: 0.01%
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Misha</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/xueyi_icon.png" alt="Xueyi">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Xueyi</div>
+                                    <div class="tooltip-roles">Roles: DPS</div>
+                                    <div class="tooltip-stats">
+                                        Average Usage: 0.05%
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Xueyi</span>
                             </div>
                             
                             <div class="character">
@@ -4864,29 +5034,16 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/hook_icon.png" alt="Hook">
+                                <img src="images/qingque_icon.png" alt="Qingque">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Hook</div>
+                                    <div class="tooltip-name">Qingque</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
-                                        Average Usage: 0.02%
+                                        Average Usage: 0.13%
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Hook</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/xueyi_icon.png" alt="Xueyi">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Xueyi</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        Average Usage: 0.05%
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Xueyi</span>
+                                <span>Qingque</span>
                             </div>
                             
                             <div class="character">
@@ -4903,55 +5060,16 @@
                             </div>
                             
                             <div class="character">
-                                <img src="images/yanqing_icon.png" alt="Yanqing">
+                                <img src="images/hook_icon.png" alt="Hook">
                                 <div class="tooltip">
-                                    <div class="tooltip-name">Yanqing</div>
+                                    <div class="tooltip-name">Hook</div>
                                     <div class="tooltip-roles">Roles: DPS</div>
                                     <div class="tooltip-stats">
-                                        Average Usage: 0.01%
+                                        Average Usage: 0.02%
                                     </div>
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
-                                <span>Yanqing</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/qingque_icon.png" alt="Qingque">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Qingque</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        Average Usage: 0.13%
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Qingque</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/dr._ratio_icon.png" alt="Dr. Ratio">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Dr. Ratio</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        Average Usage: 0.2%
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Dr. Ratio</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/dan_heng_icon.png" alt="Dan Heng">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Dan Heng</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        Average Usage: 0.01%
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Dan Heng</span>
+                                <span>Hook</span>
                             </div>
                             
                             <div class="character">
@@ -4965,19 +5083,6 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Luka</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/arlan_icon.png" alt="Arlan">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Arlan</div>
-                                    <div class="tooltip-roles">Roles: DPS</div>
-                                    <div class="tooltip-stats">
-                                        Average Usage: 0.01%
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Arlan</span>
                             </div>
                             </div><div class="role-container">
                             <div class="character">
@@ -5033,6 +5138,19 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/asta_icon.png" alt="Asta">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Asta</div>
+                                    <div class="tooltip-roles">Roles: Amplifier</div>
+                                    <div class="tooltip-stats">
+                                        Average Usage: 0.07%
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Asta</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/yukong_icon.png" alt="Yukong">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Yukong</div>
@@ -5070,46 +5188,7 @@
                                 </div>
                                 <span>Guinaifen</span>
                             </div>
-                            
-                            <div class="character">
-                                <img src="images/asta_icon.png" alt="Asta">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Asta</div>
-                                    <div class="tooltip-roles">Roles: Amplifier</div>
-                                    <div class="tooltip-stats">
-                                        Average Usage: 0.07%
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Asta</span>
-                            </div>
                             </div><div class="role-container">
-                            <div class="character">
-                                <img src="images/ice_march_7th_icon.png" alt="Ice March 7th">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Ice March 7th</div>
-                                    <div class="tooltip-roles">Roles: Sustain</div>
-                                    <div class="tooltip-stats">
-                                        Average Usage: 0.05%
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Ice March 7th</span>
-                            </div>
-                            
-                            <div class="character">
-                                <img src="images/fire_trailblazer_icon.png" alt="Fire Trailblazer">
-                                <div class="tooltip">
-                                    <div class="tooltip-name">Fire Trailblazer</div>
-                                    <div class="tooltip-roles">Roles: Sustain</div>
-                                    <div class="tooltip-stats">
-                                        Average Usage: 0.01%
-                                    </div>
-                                    <div class="tooltip-footer">Stats for v3.4.1</div>
-                                </div>
-                                <span>Fire Trailblazer</span>
-                            </div>
-                            
                             <div class="character">
                                 <img src="images/gepard_icon.png" alt="Gepard">
                                 <div class="tooltip">
@@ -5124,6 +5203,19 @@
                             </div>
                             
                             <div class="character">
+                                <img src="images/ice_march_7th_icon.png" alt="Ice March 7th">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Ice March 7th</div>
+                                    <div class="tooltip-roles">Roles: Sustain</div>
+                                    <div class="tooltip-stats">
+                                        Average Usage: 0.05%
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Ice March 7th</span>
+                            </div>
+                            
+                            <div class="character">
                                 <img src="images/natasha_icon.png" alt="Natasha">
                                 <div class="tooltip">
                                     <div class="tooltip-name">Natasha</div>
@@ -5134,6 +5226,19 @@
                                     <div class="tooltip-footer">Stats for v3.4.1</div>
                                 </div>
                                 <span>Natasha</span>
+                            </div>
+                            
+                            <div class="character">
+                                <img src="images/fire_trailblazer_icon.png" alt="Fire Trailblazer">
+                                <div class="tooltip">
+                                    <div class="tooltip-name">Fire Trailblazer</div>
+                                    <div class="tooltip-roles">Roles: Sustain</div>
+                                    <div class="tooltip-stats">
+                                        Average Usage: 0.01%
+                                    </div>
+                                    <div class="tooltip-footer">Stats for v3.4.1</div>
+                                </div>
+                                <span>Fire Trailblazer</span>
                             </div>
                             </div>
                     </div>
@@ -5170,6 +5275,14 @@
                 document.getElementById(tabId).classList.add('active');
             });
         });
+        // Methodology toggle functionality
+        const methodologyHeader = document.querySelector('.methodology-header');
+        if (methodologyHeader) {
+            methodologyHeader.addEventListener('click', () => {
+                const collapsible = methodologyHeader.closest('.methodology-collapsible');
+                collapsible.classList.toggle('collapsed');
+            });
+        }
         document.querySelectorAll('img').forEach(img => {
             img.onerror = () => {
             img.alt = "Image missing!";
