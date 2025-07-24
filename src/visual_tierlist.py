@@ -115,6 +115,18 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
             font-family: 'Segoe UI', sans-serif;
         }}
         
+        .data-note {{
+            background-color: rgba(255, 223, 127, 0.2);  /* Yellow background with transparency */
+            border: 1px solid #ffdf7f;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 15px auto 0;
+            max-width: 800px;
+            font-size: 0.9rem;
+            color: #ffdf7f;
+            text-align: center;
+        }}
+        
         /* Tab navigation */
         .tabs {{
             display: flex;
@@ -374,6 +386,11 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
             }}
         }}
         @media (max-width: 768px) {{
+            .data-note {{
+                font-size: 0.8rem;
+                padding: 8px;
+                margin: 10px 15px 0;
+            }}
             .tabs {{
                 flex-direction: column;
                 align-items: center;
@@ -402,6 +419,11 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
             <h1>Honkai: Star Rail Tier List</h1>
             <div class="timestamp">
                 Based on game version {game_version} | Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+            </div>
+            <!-- Add note about missing characters -->
+            <div class="data-note">
+                Note: Some characters are not displayed because there's insufficient data available 
+                (they were not used in any teams from the data scanned).
             </div>
         </header>
         
