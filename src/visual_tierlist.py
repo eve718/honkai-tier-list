@@ -184,8 +184,6 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
     <!-- Favicon links -->
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <!-- Existing stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {{
             --s-color: {COLORS['S']};
@@ -201,7 +199,9 @@ def generate_html(tier_lists, game_version, characters_data, role_data):
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+                         'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+                         'Open Sans', 'Helvetica Neue', sans-serif;
         }}
         body {{
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
