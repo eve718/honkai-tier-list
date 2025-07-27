@@ -169,11 +169,13 @@ if __name__ == "__main__":
         print("Please run update_data.py first to create a dataset.")
         exit(1)
 
+    characters_data = data.get("characters", {})
+
     # Calculate scores
-    scores = calculate_scores(data)
+    scores = calculate_scores(characters_data)
 
     # Generate role-based tier lists
-    tier_lists = generate_role_based_tier_lists(data, scores)
+    tier_lists = generate_role_based_tier_lists(characters_data, scores)
 
     # Print results
     for mode, role_data in tier_lists.items():

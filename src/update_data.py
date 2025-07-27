@@ -14,7 +14,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Define paths relative to script location
 ARCHIVE_DIR = os.path.join(SCRIPT_DIR, "dataset_archive")
 DATASET_PATH = os.path.join(SCRIPT_DIR, "hsr_dataset.json")  # Define locally
-VERSION = "3.4.1"
+VERSION = "3.4.2"
 
 
 def clean_dataset(data):
