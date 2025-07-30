@@ -1,0 +1,685 @@
+{
+  "characters": {
+    "Aglaea": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Anaxa": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0"}
+        ],
+        "Support DPS": [
+            {"mode": "moc", "tier": "T0.5"},
+            {"mode": "pf", "tier": "T0.5"},
+            {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Archer": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Castorice": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Phainon": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Tribbie": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T0"},
+            {"mode": "pf", "tier": "T0"},
+            {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Cipher": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Robin": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Sunday": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Ice Trailblazer": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Huohuo": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Hyacine": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Mydei": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Saber": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "The Herta": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T0"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Jade": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T0.5"},
+            {"mode": "pf", "tier": "T0"},
+            {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Ruan Mei": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Silver Wolf": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Aventurine": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Gallagher": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Lingsha": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Acheron": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Blade": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T1.5"}
+        ],
+        "Support DPS": [
+            {"mode": "moc", "tier": "T1"},
+            {"mode": "pf", "tier": "T1"},
+            {"mode": "as", "tier": "T1.5"}
+        ]
+      }
+    },
+    "Feixiao": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T3"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Rappa": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Yunli": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T2"},
+          {"mode": "as", "tier": "T1.5"}
+        ]
+      }
+    },
+    "Argenti": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T1.5"}
+        ],
+        "Support DPS": [
+            {"mode": "moc", "tier": "T1"},
+            {"mode": "pf", "tier": "T0.5"},
+            {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Black Swan": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T1"},
+            {"mode": "pf", "tier": "T1"},
+            {"mode": "as", "tier": "T1.5"}
+        ]
+      }
+    },
+    "Herta": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T1"},
+            {"mode": "pf", "tier": "T0.5"},
+            {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Kafka": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T1"},
+            {"mode": "pf", "tier": "T1"},
+            {"mode": "as", "tier": "T1.5"}
+        ]
+      }
+    },
+    "Topaz & Numby": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T1"},
+            {"mode": "pf", "tier": "T4"},
+            {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Bronya": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T2"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Jiaoqiu": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Sparkle": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Fugue": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Luocha": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T1"}
+        ]
+      }
+    }, 
+    "Boothill": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    }, 
+    "Firefly": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T3"},
+          {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Jing Yuan": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T2"}
+        ]
+      }
+    },
+    "Jingliu": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T3"},
+          {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Imaginary March 7th": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T1.5"},
+            {"mode": "pf", "tier": "T4"},
+            {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
+    "Serval": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T1.5"},
+            {"mode": "pf", "tier": "T1"},
+            {"mode": "as", "tier": "T1.5"}
+        ]
+      }
+    },
+    "Pela": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T1.5"}
+        ]
+      }
+    },
+    "Tingyun": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T2"},
+          {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Fu Xuan": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Himeko": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T2"},
+          {"mode": "pf", "tier": "T2"},
+          {"mode": "as", "tier": "T2"}
+        ]
+      }
+    },
+    "Moze": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T2"},
+            {"mode": "pf", "tier": "T5"},
+            {"mode": "as", "tier": "T2"}
+        ]
+      }
+    },
+    "Imaginary Trailblazer": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T2"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T1"}
+        ]
+      }
+    },
+    "Clara": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T3"},
+          {"mode": "as", "tier": "T3"}
+        ]
+      }
+    },
+    "Dr. Ratio": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T3"}
+        ]
+      }
+    },
+    "Dan Heng \u2022 Imbibitor Lunae": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T3"}
+        ]
+      }
+    },
+    "Qingque": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T4"}
+        ]
+      }
+    },
+    "Seele": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T3"}
+        ]
+      }
+    },
+    "Asta": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T3"}
+        ]
+      }
+    },
+    "Guinaifen": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T4"}
+        ]
+      }
+    },
+    "Bailu": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T2"}
+        ]
+      }
+    },
+    "Lynx": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T3"}
+        ]
+      }
+    },
+    "Luka": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T4"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Xueyi": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T4"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T4"}
+        ]
+      }
+    },
+    "Sampo": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T4"},
+            {"mode": "pf", "tier": "T5"},
+            {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Welt": {
+      "roles": {
+        "Support DPS": [
+            {"mode": "moc", "tier": "T4"},
+            {"mode": "pf", "tier": "T4"},
+            {"mode": "as", "tier": "T4"}
+        ]
+      }
+    },
+    "Hanya": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T4"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T3"}
+        ]
+      }
+    },
+    "Gepard": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T4"},
+          {"mode": "pf", "tier": "T3"},
+          {"mode": "as", "tier": "T2"}
+        ]
+      }
+    },
+    "Arlan": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Dan Heng": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Hook": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Misha": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Sushang": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T4"}
+        ]
+      }
+    },  
+    "Physical Trailblazer": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Yanqing": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Yukong": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T4"}
+        ]
+      }
+    },
+    "Ice March 7th": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Natasha": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    },
+    "Fire Trailblazer": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T5"},
+          {"mode": "pf", "tier": "T5"},
+          {"mode": "as", "tier": "T5"}
+        ]
+      }
+    }
+  }
+}

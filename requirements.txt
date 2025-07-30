@@ -1,3 +1,1 @@
-pandas
 numpy
-requests  # If update_data.py fetches online data

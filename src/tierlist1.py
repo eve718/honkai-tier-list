@@ -112,16 +112,16 @@ def generate_tierlist(data):
 
 def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
     """Generate an HTML tier list page from the tierlist data"""
-    # Define tier colors with more vibrant palette
+    # Updated vibrant tier colors with better contrast
     TIER_COLORS = {
-        "T0": "#FF6B6B",  # Coral red
-        "T0.5": "#FF9E6B",  # Peach
-        "T1": "#FFD166",  # Pastel yellow
-        "T1.5": "#A3C586",  # Sage green
-        "T2": "#4ECDC4",  # Turquoise
-        "T3": "#6A7FDB",  # Periwinkle
-        "T4": "#9B59B6",  # Lavender
-        "T5": "#95A5A6",  # Cool gray
+        "T0": "#ff3366",  # Vibrant pink-red
+        "T0.5": "#ff7733",  # Bright orange
+        "T1": "#ffcc00",  # Golden yellow
+        "T1.5": "#aadd55",  # Lime green
+        "T2": "#44cc99",  # Turquoise
+        "T3": "#44aaff",  # Vibrant blue
+        "T4": "#aa66ff",  # Purple
+        "T5": "#cc88ee",  # Light purple
     }
 
     # Role display names
@@ -154,19 +154,18 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Honkai: Star Rail Tier List</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="icon" href="favicon.png" type="image/png">
         <style>
             :root {{
-                --background-dark: #0f0f1d;
-                --background-card: #1a182d;
+                --background-dark: #0f0c1d;
+                --background-card: #1a1730;
                 --text-primary: #f0f0ff;
                 --text-secondary: #a0a0c0;
-                --accent-color: #6a7fdb;
+                --accent-color: #ffcc00;
                 --transition-speed: 0.3s;
-                --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-                --card-radius: 12px;
+                --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
             }}
             
             * {{
@@ -176,8 +175,8 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
             }}
             
             body {{
-                font-family: 'Inter', sans-serif;
-                background: var(--background-dark);
+                font-family: 'Roboto', sans-serif;
+                background: radial-gradient(circle at top, #1a1a2e 0%, #0f0c1d 70%);
                 color: var(--text-primary);
                 line-height: 1.6;
                 padding: 20px;
@@ -195,76 +194,142 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
                 text-align: center;
                 margin-bottom: 40px;
                 padding: 40px 20px;
-                background: var(--background-card);
-                border-radius: var(--card-radius);
+                background: rgba(26, 23, 48, 0.85);
+                border-radius: 20px;
                 box-shadow: var(--card-shadow);
                 backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 position: relative;
                 overflow: hidden;
                 z-index: 2;
             }}
             
+            header::before {{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, 
+                    #ff3366, #ff7733, #ffcc00, #aadd55, 
+                    #44cc99, #44aaff, #aa66ff, #cc88ee);
+                animation: gradientFlow 8s ease infinite;
+                background-size: 300% 300%;
+            }}
+            
+            .header-content {{
+                position: relative;
+                z-index: 3;
+            }}
+            
             h1 {{
-                font-size: 2.8rem;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 3rem;
                 margin-bottom: 15px;
-                font-weight: 700;
-                letter-spacing: -0.5px;
-                background: linear-gradient(to right, #f0f0ff, #a0a0c0);
+                color: #ffffff;
+                text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+                letter-spacing: 1.5px;
+                font-weight: 800;
+                background: linear-gradient(to right, #ffcc00, #ff7733, #ff3366);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }}
             
             .subtitle {{
-                font-size: 1.1rem;
+                font-size: 1.2rem;
                 color: var(--text-secondary);
-                max-width: 700px;
+                max-width: 800px;
                 margin: 0 auto 25px;
-                font-weight: 300;
+            }}
+            
+            .controls {{
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }}
+            
+            .view-toggle {{
+                background: rgba(40, 37, 60, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                color: var(--text-primary);
+                padding: 8px 20px;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }}
+            
+            .view-toggle:hover {{
+                background: rgba(60, 55, 90, 0.9);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            }}
+            
+            .view-toggle.active {{
+                background: var(--accent-color);
+                color: #121212;
+                font-weight: 600;
             }}
             
             .legend {{
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 15px;
                 margin-top: 30px;
             }}
             
             .legend-item {{
                 display: flex;
                 align-items: center;
-                background: rgba(40, 37, 60, 0.3);
+                background: rgba(40, 37, 60, 0.9);
                 padding: 8px 16px;
                 border-radius: 30px;
-                font-size: 0.9rem;
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                transition: all 0.3s ease;
+                font-size: 0.95rem;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease;
             }}
             
             .legend-item:hover {{
                 transform: translateY(-3px);
-                background: rgba(50, 47, 70, 0.5);
             }}
             
             .legend-color {{
-                width: 16px;
-                height: 16px;
+                width: 18px;
+                height: 18px;
                 border-radius: 50%;
-                margin-right: 8px;
+                margin-right: 10px;
                 box-shadow: 0 0 8px currentColor;
             }}
             
             .tier-list {{
-                background: var(--background-card);
-                border-radius: var(--card-radius);
+                background: rgba(26, 23, 48, 0.8);
+                border-radius: 20px;
                 box-shadow: var(--card-shadow);
                 backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 overflow: hidden;
                 padding: 25px;
                 margin-bottom: 40px;
                 position: relative;
+            }}
+            
+            .tier-list::before {{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+                pointer-events: none;
+                z-index: 0;
             }}
             
             table {{
@@ -277,38 +342,40 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
             }}
             
             th, td {{
-                padding: 16px 20px;
+                padding: 18px 22px;
                 text-align: left;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }}
             
             thead th {{
-                background: rgba(30, 28, 50, 0.9);
-                font-weight: 600;
+                background: rgba(50, 45, 80, 0.9);
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
                 text-transform: uppercase;
-                letter-spacing: 1px;
+                letter-spacing: 1.5px;
                 text-align: center;
                 position: sticky;
                 top: 0;
                 z-index: 10;
                 backdrop-filter: blur(8px);
                 color: #ffffff;
-                font-size: 1.1rem;
-                border-top: 1px solid rgba(255, 255, 255, 0.05);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                font-size: 1.2rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             }}
             
             .tier-header {{
-                font-weight: 700;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 800;
                 text-align: center;
                 width: 100px;
                 position: sticky;
                 left: 0;
                 z-index: 5;
-                font-size: 1.1rem;
-                background: rgba(20, 18, 35, 0.9);
-                backdrop-filter: blur(5px);
-                border-right: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 1.3rem;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
             }}
             
             .character-cell {{
@@ -318,71 +385,89 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
             .character {{
                 display: inline-flex;
                 align-items: center;
-                background: rgba(30, 28, 45, 0.7);
-                padding: 10px 18px;
-                margin: 6px;
-                border-radius: 10px;
+                background: linear-gradient(to right, rgba(40, 37, 60, 0.7), rgba(30, 27, 50, 0.9));
+                padding: 12px 20px;
+                margin: 8px;
+                border-radius: 15px;
                 transition: all var(--transition-speed) ease;
                 cursor: default;
+                box-shadow: var(--card-shadow);
                 animation: fadeIn 0.5s ease-out;
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 position: relative;
                 overflow: hidden;
                 z-index: 1;
                 backdrop-filter: blur(4px);
             }}
             
+            .character::before {{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+                z-index: -1;
+                opacity: 0;
+                transition: opacity var(--transition-speed);
+            }}
+            
+            .character:hover::before {{
+                opacity: 0.6;
+            }}
+            
             .character:hover {{
-                transform: translateY(-5px);
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                transform: translateY(-8px);
+                box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
                 z-index: 2;
-                border-color: rgba(255, 255, 255, 0.15);
             }}
             
             .character-icon {{
                 width: 36px;
                 height: 36px;
                 border-radius: 50%;
-                margin-right: 12px;
+                margin-right: 14px;
                 flex-shrink: 0;
                 object-fit: cover;
-                border: 1px solid rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.25);
                 background: rgba(0, 0, 0, 0.3);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
                 transition: all 0.3s ease;
             }}
             
             .character:hover .character-icon {{
                 transform: scale(1.1);
-                box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
             }}
             
             .character-name {{
                 position: relative;
                 z-index: 1;
                 font-weight: 500;
-                font-size: 0.95rem;
+                letter-spacing: 0.5px;
             }}
             
             .role-column {{
                 vertical-align: top;
-                background: rgba(25, 23, 40, 0.4);
+                background: rgba(30, 27, 50, 0.4);
                 transition: background-color 0.3s;
                 backdrop-filter: blur(3px);
             }}
             
             .role-column:hover {{
-                background: rgba(35, 33, 50, 0.6);
+                background: rgba(40, 37, 70, 0.6);
             }}
             
             footer {{
                 text-align: center;
                 margin-top: 20px;
                 color: var(--text-secondary);
-                font-size: 0.9rem;
-                padding: 20px;
-                background: var(--background-card);
-                border-radius: var(--card-radius);
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 0.95rem;
+                padding: 25px;
+                background: rgba(26, 23, 48, 0.8);
+                border-radius: 15px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 box-shadow: var(--card-shadow);
                 backdrop-filter: blur(5px);
             }}
@@ -402,13 +487,19 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
             }}
             
             @keyframes fadeIn {{
-                from {{ opacity: 0; transform: translateY(10px); }}
+                from {{ opacity: 0; transform: translateY(15px); }}
                 to {{ opacity: 1; transform: translateY(0); }}
+            }}
+            
+            @keyframes gradientFlow {{
+                0% {{ background-position: 0% 50%; }}
+                50% {{ background-position: 100% 50%; }}
+                100% {{ background-position: 0% 50%; }}
             }}
             
             @keyframes float {{
                 0% {{ transform: translateY(0px); }}
-                50% {{ transform: translateY(-5px); }}
+                50% {{ transform: translateY(-10px); }}
                 100% {{ transform: translateY(0px); }}
             }}
             
@@ -428,46 +519,60 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
                 }}
                 
                 h1 {{
-                    font-size: 2.2rem;
+                    font-size: 2.4rem;
                 }}
                 
                 .character {{
-                    padding: 8px 14px;
+                    padding: 10px 16px;
                 }}
             }}
             
             .tier-list-mobile {{
                 display: none;
                 flex-direction: column;
-                gap: 25px;
+                gap: 30px;
                 margin-bottom: 40px;
             }}
             
             .tier-section {{
-                background: var(--background-card);
-                border-radius: var(--card-radius);
+                background: rgba(40, 37, 60, 0.7);
+                border-radius: 20px;
                 overflow: hidden;
                 box-shadow: var(--card-shadow);
                 position: relative;
                 z-index: 1;
             }}
             
+            .tier-section::before {{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 0%, transparent 40%);
+                pointer-events: none;
+                z-index: -1;
+            }}
+            
             .tier-header-mobile {{
-                padding: 20px;
-                font-weight: 700;
-                font-size: 1.4rem;
+                padding: 22px 20px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 800;
+                font-size: 1.6rem;
                 text-align: center;
-                background: rgba(20, 18, 35, 0.9);
-                letter-spacing: 0.5px;
+                color: #121212;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                letter-spacing: 1px;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
                 position: relative;
                 z-index: 2;
             }}
             
             .role-row {{
-                padding: 16px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                background: rgba(30, 28, 45, 0.5);
+                padding: 18px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                background: rgba(30, 27, 50, 0.5);
                 backdrop-filter: blur(5px);
             }}
             
@@ -476,27 +581,29 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
             }}
             
             .role-header {{
-                font-weight: 600;
-                font-size: 1.1rem;
-                margin-bottom: 12px;
-                color: var(--text-primary);
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+                color: var(--accent-color);
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 12px;
+                letter-spacing: 0.5px;
             }}
             
             .role-header::after {{
                 content: '';
                 flex-grow: 1;
-                height: 1px;
-                background: rgba(255, 255, 255, 0.1);
+                height: 2px;
+                background: linear-gradient(90deg, var(--accent-color), transparent);
                 border-radius: 2px;
             }}
             
             .characters-row {{
                 display: flex;
                 flex-wrap: wrap;
-                gap: 8px;
+                gap: 10px;
             }}
             
             /* Responsive switching */
@@ -521,34 +628,24 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
                     display: none;
                 }}
             }}
-            
-            /* Glow effect for tiers */
-            .tier-glow {{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                background: radial-gradient(circle at center, currentColor 0%, transparent 70%);
-                opacity: 0.1;
-                pointer-events: none;
-                z-index: -1;
-            }}
         </style>
     </head>
     <body>
         <div class="container">
             <header>
-                <h1>Honkai: Star Rail Tier List</h1>
-                
-                <div class="legend">
-                    {"".join(
-                        f'<div class="legend-item" style="color: {TIER_COLORS[tier]}">'
-                        f'<div class="legend-color" style="background: {TIER_COLORS[tier]}"></div>'
-                        f'{tier}'
-                        '</div>'
-                        for tier in tiers
-                    )}
+                <div class="header-content">
+                    <h1>Honkai: Star Rail Tier List</h1>
+                    <p class="subtitle">Comprehensive character rankings based on community analysis</p>
+                    
+                    <div class="legend">
+                        {"".join(
+                            f'<div class="legend-item" style="color: {TIER_COLORS[tier]}">'
+                            f'<div class="legend-color" style="background: {TIER_COLORS[tier]}"></div>'
+                            f'{tier}'
+                            '</div>'
+                            for tier in tiers
+                        )}
+                    </div>
                 </div>
             </header>
             
@@ -575,10 +672,8 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
         if tier_empty:
             continue
 
-        html += f"<tr>"
-        html += (
-            f'<td class="tier-header" style="color: {TIER_COLORS[tier]}">{tier}</td>'
-        )
+        html += f'<tr style="background: linear-gradient(90deg, {TIER_COLORS[tier]}22, transparent);">'
+        html += f'<td class="tier-header" style="background: linear-gradient(135deg, {TIER_COLORS[tier]}, {TIER_COLORS[tier]}dd); color: #121212;">{tier}</td>'
 
         for role in roles:
             html += '<td class="role-column character-cell">'
@@ -587,7 +682,6 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
                     icon_filename = get_icon_filename(char["character"])
                     html += f"""
                     <div class="character">
-                        <div class="tier-glow" style="color: {TIER_COLORS[tier]}"></div>
                         <img class="character-icon" src="icons/{icon_filename}" alt="{char['character']}">
                         <span class="character-name">{char["character"]}</span>
                     </div>
@@ -617,7 +711,7 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
 
         html += f"""
         <div class="tier-section">
-            <div class="tier-header-mobile" style="color: {TIER_COLORS[tier]};">
+            <div class="tier-header-mobile" style="background: linear-gradient(135deg, {TIER_COLORS[tier]}, {TIER_COLORS[tier]}dd);">
                 {tier}
             </div>
         """
@@ -636,7 +730,6 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
                     icon_filename = get_icon_filename(char["character"])
                     html += f"""
                     <div class="character">
-                        <div class="tier-glow" style="color: {TIER_COLORS[tier]}"></div>
                         <img class="character-icon" src="icons/{icon_filename}" alt="{char['character']}">
                         <span class="character-name">{char["character"]}</span>
                     </div>
@@ -659,6 +752,10 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
                         <i class="fas fa-sync-alt"></i>
                         <span>Last updated: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}</span>
                     </div>
+                    <div class="credits">
+                        <i class="fas fa-code"></i>
+                        <span>Community-Driven Rankings</span>
+                    </div>
                 </div>
             </footer>
         </div>
@@ -668,30 +765,38 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
             document.addEventListener('DOMContentLoaded', function() {{
                 // Staggered character animations
                 document.querySelectorAll('.character').forEach((char, index) => {{
-                    char.style.animationDelay = `${{index * 0.03}}s`;
+                    char.style.animationDelay = `${{index * 0.05}}s`;
                     
                     // Add tier-specific glow on hover
                     char.addEventListener('mouseenter', function() {{
-                        const glow = this.querySelector('.tier-glow');
-                        if (glow) {{
-                            glow.style.opacity = '0.2';
+                        const tier = this.closest('tr') ? this.closest('tr').querySelector('.tier-header').textContent.trim() : 
+                                   this.closest('.tier-section') ? this.closest('.tier-section').querySelector('.tier-header-mobile').textContent.trim() : '';
+                        if (tier && TIER_COLORS[tier]) {{
+                            this.style.boxShadow = `0 8px 25px ${{TIER_COLORS[tier]}}80`;
                         }}
                     }});
                     
                     char.addEventListener('mouseleave', function() {{
-                        const glow = this.querySelector('.tier-glow');
-                        if (glow) {{
-                            glow.style.opacity = '0.1';
-                        }}
+                        this.style.boxShadow = 'var(--card-shadow)';
                     }});
                 }});
                 
                 // Floating animation for legend items
                 const legendItems = document.querySelectorAll('.legend-item');
                 legendItems.forEach((item, index) => {{
-                    item.style.animation = `float 4s ease-in-out ${{index * 0.2}}s infinite`;
+                    item.style.animation = `float 3s ease-in-out ${{index * 0.2}}s infinite`;
+                }});
+                
+                // Add parallax effect
+                window.addEventListener('scroll', function() {{
+                    const scrollY = window.scrollY;
+                    document.querySelector('header').style.backgroundPosition = `center ${{scrollY * 0.4}}px`;
+                    document.querySelector('.tier-list').style.backgroundPosition = `center ${{scrollY * 0.3}}px`;
                 }});
             }});
+            
+            // Tier colors for JavaScript
+            const TIER_COLORS = {json.dumps(TIER_COLORS)};
         </script>
     </body>
     </html>

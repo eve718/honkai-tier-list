@@ -5,11 +5,10 @@ pip install -r requirements.txt
 
 # Run scripts
 cd src
-python update_data.py
-python visual_tierlist.py
+python tierlist.py
 
 # Move files to public directory
 cp index.html ../public/
-cp -r images ../public/
+cp -r icons ../public/
 
 echo "Build complete!"

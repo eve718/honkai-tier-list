@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://my-hsr-tierlist.netlify.app/sitemap.xml
