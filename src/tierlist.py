@@ -406,12 +406,6 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
                 to {{ opacity: 1; transform: translateY(0); }}
             }}
             
-            @keyframes float {{
-                0% {{ transform: translateY(0px); }}
-                50% {{ transform: translateY(-5px); }}
-                100% {{ transform: translateY(0px); }}
-            }}
-            
             /* Mobile styles */
             @media (max-width: 768px) {{
                 .tier-header {{
@@ -684,12 +678,6 @@ def generate_html_tierlist(tierlist_data, output_file="../public/index.html"):
                             glow.style.opacity = '0.1';
                         }}
                     }});
-                }});
-                
-                // Floating animation for legend items
-                const legendItems = document.querySelectorAll('.legend-item');
-                legendItems.forEach((item, index) => {{
-                    item.style.animation = `float 4s ease-in-out ${{index * 0.2}}s infinite`;
                 }});
             }});
         </script>
