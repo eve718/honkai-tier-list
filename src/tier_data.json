@@ -19,7 +19,7 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T0.5"},
             {"mode": "pf", "tier": "T0.5"},
-            {"mode": "as", "tier": "T0"}
+            {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
@@ -145,7 +145,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T0.5"},
           {"mode": "pf", "tier": "T0"},
-          {"mode": "as", "tier": "T0"}
+          {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
@@ -154,7 +154,7 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T0.5"},
             {"mode": "pf", "tier": "T0"},
-            {"mode": "as", "tier": "T0.5"}
+            {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -208,7 +208,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -217,12 +217,12 @@
         "DPS": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "as", "tier": "T1"}
         ],
         "Support DPS": [
             {"mode": "moc", "tier": "T1"},
             {"mode": "pf", "tier": "T1"},
-            {"mode": "as", "tier": "T1.5"}
+            {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -258,12 +258,12 @@
         "DPS": [
           {"mode": "moc", "tier": "T3"},
           {"mode": "pf", "tier": "T0.5"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "as", "tier": "T2"}
         ],
         "Support DPS": [
             {"mode": "moc", "tier": "T1"},
             {"mode": "pf", "tier": "T0.5"},
-            {"mode": "as", "tier": "T1"}
+            {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -281,7 +281,7 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T1"},
             {"mode": "pf", "tier": "T0.5"},
-            {"mode": "as", "tier": "T1"}
+            {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -380,7 +380,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -398,7 +398,7 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T1.5"},
             {"mode": "pf", "tier": "T1"},
-            {"mode": "as", "tier": "T1.5"}
+            {"mode": "as", "tier": "T2"}
         ]
       }
     },
@@ -416,7 +416,7 @@
         "Amplifier": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
@@ -488,7 +488,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T4"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T4"}
+          {"mode": "as", "tier": "T5"}
         ]
       }
     },
