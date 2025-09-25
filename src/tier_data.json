@@ -50,6 +50,20 @@
         ]
       }
     },
+    "March 7th \u2022 Evernight": {
+      "roles": {
+        "DPS": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0"},
+          {"mode": "as", "tier": "T1"}
+        ],
+        "Support DPS": [
+            {"mode": "moc", "tier": "T0"},
+            {"mode": "pf", "tier": "T0"},
+            {"mode": "as", "tier": "T0.5"}
+        ]
+      }
+    },
     "Phainon": {
       "roles": {
         "DPS": [
@@ -61,7 +75,7 @@
     },
     "Tribbie": {
       "roles": {
-        "Support DPS": [
+        "Amplifier": [
             {"mode": "moc", "tier": "T0"},
             {"mode": "pf", "tier": "T0"},
             {"mode": "as", "tier": "T0"}
@@ -80,16 +94,16 @@
     "Cipher": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T0"},
+          {"mode": "moc", "tier": "T0.5"},
           {"mode": "pf", "tier": "T0.5"},
-          {"mode": "as", "tier": "T0"}
+          {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
     "Robin": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T0"},
+          {"mode": "moc", "tier": "T0.5"},
           {"mode": "pf", "tier": "T0.5"},
           {"mode": "as", "tier": "T0"}
         ]
@@ -116,7 +130,7 @@
     "Huohuo": {
       "roles": {
         "Sustain": [
-          {"mode": "moc", "tier": "T0"},
+          {"mode": "moc", "tier": "T0.5"},
           {"mode": "pf", "tier": "T0.5"},
           {"mode": "as", "tier": "T0.5"}
         ]
@@ -136,7 +150,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T0.5"},
           {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T0.5"}
+          {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -161,7 +175,7 @@
     "Jade": {
       "roles": {
         "Support DPS": [
-            {"mode": "moc", "tier": "T0.5"},
+            {"mode": "moc", "tier": "T1"},
             {"mode": "pf", "tier": "T0"},
             {"mode": "as", "tier": "T1"}
         ]
@@ -179,7 +193,7 @@
     "Silver Wolf": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T1"},
           {"mode": "as", "tier": "T0.5"}
         ]
@@ -226,7 +240,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ],
         "Support DPS": [
             {"mode": "moc", "tier": "T1"},
@@ -240,7 +254,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T0"}
+          {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
@@ -249,7 +263,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T1.5"},
           {"mode": "pf", "tier": "T1.5"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -258,20 +272,20 @@
         "DPS": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T2"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "as", "tier": "T2"}
         ]
       }
     },
     "Argenti": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T3"},
-          {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T2"}
+          {"mode": "moc", "tier": "T4"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T3"}
         ],
         "Support DPS": [
-            {"mode": "moc", "tier": "T1"},
-            {"mode": "pf", "tier": "T0.5"},
+            {"mode": "moc", "tier": "T1.5"},
+            {"mode": "pf", "tier": "T1"},
             {"mode": "as", "tier": "T1.5"}
         ]
       }
@@ -279,8 +293,8 @@
     "Black Swan": {
       "roles": {
         "Support DPS": [
-            {"mode": "moc", "tier": "T1"},
-            {"mode": "pf", "tier": "T1"},
+            {"mode": "moc", "tier": "T0.5"},
+            {"mode": "pf", "tier": "T0.5"},
             {"mode": "as", "tier": "T1.5"}
         ]
       }
@@ -288,7 +302,7 @@
     "Herta": {
       "roles": {
         "Support DPS": [
-            {"mode": "moc", "tier": "T1"},
+            {"mode": "moc", "tier": "T1.5"},
             {"mode": "pf", "tier": "T0.5"},
             {"mode": "as", "tier": "T1.5"}
         ]
@@ -297,8 +311,8 @@
     "Kafka": {
       "roles": {
         "Support DPS": [
-            {"mode": "moc", "tier": "T0.5"},
-            {"mode": "pf", "tier": "T0.5"},
+            {"mode": "moc", "tier": "T0"},
+            {"mode": "pf", "tier": "T0"},
             {"mode": "as", "tier": "T1"}
         ]
       }
@@ -344,7 +358,7 @@
         "Amplifier": [
           {"mode": "moc", "tier": "T1.5"},
           {"mode": "pf", "tier": "T1.5"},
-          {"mode": "as", "tier": "T0.5"}
+          {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -360,9 +374,9 @@
     "Boothill": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "moc", "tier": "T2"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T0.5"}
+          {"mode": "as", "tier": "T1"}
         ]
       }
     }, 
@@ -371,16 +385,16 @@
         "DPS": [
           {"mode": "moc", "tier": "T1.5"},
           {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T0.5"}
+          {"mode": "as", "tier": "T1"}
         ]
       }
     },
     "Jing Yuan": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "moc", "tier": "T2"},
           {"mode": "pf", "tier": "T1.5"},
-          {"mode": "as", "tier": "T2"}
+          {"mode": "as", "tier": "T3"}
         ]
       }
     },
@@ -389,7 +403,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T2"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "as", "tier": "T2"}
         ]
       }
     },
@@ -398,14 +412,14 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T1.5"},
             {"mode": "pf", "tier": "T4"},
-            {"mode": "as", "tier": "T0.5"}
+            {"mode": "as", "tier": "T1"}
         ]
       }
     },
     "Serval": {
       "roles": {
         "Support DPS": [
-            {"mode": "moc", "tier": "T1.5"},
+            {"mode": "moc", "tier": "T2"},
             {"mode": "pf", "tier": "T1.5"},
             {"mode": "as", "tier": "T2"}
         ]
@@ -414,7 +428,7 @@
     "Pela": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "moc", "tier": "T2"},
           {"mode": "pf", "tier": "T1.5"},
           {"mode": "as", "tier": "T1.5"}
         ]
@@ -425,7 +439,7 @@
         "Amplifier": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T0.5"}
+          {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -441,9 +455,9 @@
     "Himeko": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T2"},
+          {"mode": "moc", "tier": "T3"},
           {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T2"}
+          {"mode": "as", "tier": "T3"}
         ]
       }
     },
@@ -461,7 +475,7 @@
         "Amplifier": [
           {"mode": "moc", "tier": "T2"},
           {"mode": "pf", "tier": "T2"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -470,14 +484,14 @@
         "DPS": [
           {"mode": "moc", "tier": "T3"},
           {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T3"}
+          {"mode": "as", "tier": "T4"}
         ]
       }
     },
     "Dr. Ratio": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T3"},
+          {"mode": "moc", "tier": "T4"},
           {"mode": "pf", "tier": "T5"},
           {"mode": "as", "tier": "T3"}
         ]
@@ -486,16 +500,16 @@
     "Dan Heng \u2022 Imbibitor Lunae": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T3"},
+          {"mode": "moc", "tier": "T4"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T3"}
+          {"mode": "as", "tier": "T4"}
         ]
       }
     },
     "Qingque": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T4"},
+          {"mode": "moc", "tier": "T5"},
           {"mode": "pf", "tier": "T5"},
           {"mode": "as", "tier": "T5"}
         ]
@@ -504,16 +518,16 @@
     "Seele": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T3"},
+          {"mode": "moc", "tier": "T4"},
           {"mode": "pf", "tier": "T4"},
-          {"mode": "as", "tier": "T3"}
+          {"mode": "as", "tier": "T4"}
         ]
       }
     },
     "Asta": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T3"},
+          {"mode": "moc", "tier": "T4"},
           {"mode": "pf", "tier": "T5"},
           {"mode": "as", "tier": "T3"}
         ]
@@ -522,7 +536,7 @@
     "Guinaifen": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T3"},
+          {"mode": "moc", "tier": "T4"},
           {"mode": "pf", "tier": "T4"},
           {"mode": "as", "tier": "T4"}
         ]
@@ -549,7 +563,7 @@
     "Luka": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T4"},
+          {"mode": "moc", "tier": "T5"},
           {"mode": "pf", "tier": "T5"},
           {"mode": "as", "tier": "T5"}
         ]
@@ -560,14 +574,14 @@
         "DPS": [
           {"mode": "moc", "tier": "T5"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T4"}
+          {"mode": "as", "tier": "T5"}
         ]
       }
     },
     "Sampo": {
       "roles": {
         "Support DPS": [
-            {"mode": "moc", "tier": "T4"},
+            {"mode": "moc", "tier": "T5"},
             {"mode": "pf", "tier": "T5"},
             {"mode": "as", "tier": "T5"}
         ]
@@ -576,7 +590,7 @@
     "Welt": {
       "roles": {
         "Support DPS": [
-            {"mode": "moc", "tier": "T4"},
+            {"mode": "moc", "tier": "T5"},
             {"mode": "pf", "tier": "T5"},
             {"mode": "as", "tier": "T4"}
         ]
@@ -641,7 +655,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T5"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T4"}
+          {"mode": "as", "tier": "T5"}
         ]
       }
     },  
