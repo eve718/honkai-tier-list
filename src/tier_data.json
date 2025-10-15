@@ -46,7 +46,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T0"},
           {"mode": "pf", "tier": "T0"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
@@ -141,6 +141,15 @@
         "Sustain": [
           {"mode": "moc", "tier": "T0"},
           {"mode": "pf", "tier": "T0"},
+          {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Dan Heng \u2022 Permansor Terrae": {
+      "roles": {
+        "Sustain": [
+          {"mode": "moc", "tier": "T0"},
+          {"mode": "pf", "tier": "T0.5"},
           {"mode": "as", "tier": "T0"}
         ]
       }
@@ -295,7 +304,7 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T0.5"},
             {"mode": "pf", "tier": "T0.5"},
-            {"mode": "as", "tier": "T1.5"}
+            {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -313,7 +322,7 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T0"},
             {"mode": "pf", "tier": "T0"},
-            {"mode": "as", "tier": "T1"}
+            {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
@@ -556,7 +565,7 @@
         "Sustain": [
           {"mode": "moc", "tier": "T3"},
           {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T3"}
+          {"mode": "as", "tier": "T2"}
         ]
       }
     },
@@ -610,7 +619,7 @@
         "Sustain": [
           {"mode": "moc", "tier": "T4"},
           {"mode": "pf", "tier": "T4"},
-          {"mode": "as", "tier": "T2"}
+          {"mode": "as", "tier": "T3"}
         ]
       }
     },
