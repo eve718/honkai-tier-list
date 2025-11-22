@@ -26,7 +26,7 @@
     "Archer": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T0"},
+          {"mode": "moc", "tier": "T0.5"},
           {"mode": "pf", "tier": "T4"},
           {"mode": "as", "tier": "T0"}
         ]
@@ -55,12 +55,12 @@
         "DPS": [
           {"mode": "moc", "tier": "T0"},
           {"mode": "pf", "tier": "T0"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T0.5"}
         ],
         "Support DPS": [
             {"mode": "moc", "tier": "T0"},
             {"mode": "pf", "tier": "T0"},
-            {"mode": "as", "tier": "T0.5"}
+            {"mode": "as", "tier": "T0"}
         ]
       }
     },
@@ -74,6 +74,15 @@
       }
     },
     "Tribbie": {
+      "roles": {
+        "Amplifier": [
+            {"mode": "moc", "tier": "T0"},
+            {"mode": "pf", "tier": "T0"},
+            {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "Cyrene": {
       "roles": {
         "Amplifier": [
             {"mode": "moc", "tier": "T0"},
@@ -247,14 +256,14 @@
     "Blade": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T1"},
+          {"mode": "moc", "tier": "T1.5"},
           {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "as", "tier": "T2"}
         ],
         "Support DPS": [
-            {"mode": "moc", "tier": "T1"},
+            {"mode": "moc", "tier": "T1.5"},
             {"mode": "pf", "tier": "T1"},
-            {"mode": "as", "tier": "T1"}
+            {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -270,7 +279,7 @@
     "Rappa": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "moc", "tier": "T2"},
           {"mode": "pf", "tier": "T1.5"},
           {"mode": "as", "tier": "T1.5"}
         ]
@@ -279,9 +288,9 @@
     "Yunli": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T1"},
+          {"mode": "moc", "tier": "T1.5"},
           {"mode": "pf", "tier": "T2"},
-          {"mode": "as", "tier": "T2"}
+          {"mode": "as", "tier": "T3"}
         ]
       }
     },
@@ -329,7 +338,7 @@
     "Topaz & Numby": {
       "roles": {
         "Support DPS": [
-            {"mode": "moc", "tier": "T1"},
+            {"mode": "moc", "tier": "T1.5"},
             {"mode": "pf", "tier": "T4"},
             {"mode": "as", "tier": "T1"}
         ]
@@ -349,7 +358,7 @@
         "Amplifier": [
           {"mode": "moc", "tier": "T1"},
           {"mode": "pf", "tier": "T1"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -365,9 +374,9 @@
     "Fugue": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "moc", "tier": "T2"},
           {"mode": "pf", "tier": "T1.5"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -385,16 +394,16 @@
         "DPS": [
           {"mode": "moc", "tier": "T2"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ]
       }
     }, 
     "Firefly": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "moc", "tier": "T2"},
           {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T1"}
+          {"mode": "as", "tier": "T1.5"}
         ]
       }
     },
@@ -410,9 +419,9 @@
     "Jingliu": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T1"},
+          {"mode": "moc", "tier": "T1.5"},
           {"mode": "pf", "tier": "T2"},
-          {"mode": "as", "tier": "T2"}
+          {"mode": "as", "tier": "T3"}
         ]
       }
     },
@@ -430,7 +439,7 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T2"},
             {"mode": "pf", "tier": "T1.5"},
-            {"mode": "as", "tier": "T2"}
+            {"mode": "as", "tier": "T3"}
         ]
       }
     },
@@ -466,7 +475,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T3"},
           {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T3"}
+          {"mode": "as", "tier": "T4"}
         ]
       }
     },
@@ -475,16 +484,16 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T2"},
             {"mode": "pf", "tier": "T5"},
-            {"mode": "as", "tier": "T2"}
+            {"mode": "as", "tier": "T3"}
         ]
       }
     },
     "Imaginary Trailblazer": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T2"},
+          {"mode": "moc", "tier": "T3"},
           {"mode": "pf", "tier": "T2"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "as", "tier": "T2"}
         ]
       }
     },
@@ -502,7 +511,7 @@
         "DPS": [
           {"mode": "moc", "tier": "T4"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T3"}
+          {"mode": "as", "tier": "T4"}
         ]
       }
     },
@@ -536,16 +545,16 @@
     "Asta": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T4"},
+          {"mode": "moc", "tier": "T5"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T3"}
+          {"mode": "as", "tier": "T4"}
         ]
       }
     },
     "Guinaifen": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T4"},
+          {"mode": "moc", "tier": "T5"},
           {"mode": "pf", "tier": "T4"},
           {"mode": "as", "tier": "T4"}
         ]
@@ -601,14 +610,14 @@
         "Support DPS": [
             {"mode": "moc", "tier": "T5"},
             {"mode": "pf", "tier": "T5"},
-            {"mode": "as", "tier": "T4"}
+            {"mode": "as", "tier": "T5"}
         ]
       }
     },
     "Hanya": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T4"},
+          {"mode": "moc", "tier": "T5"},
           {"mode": "pf", "tier": "T5"},
           {"mode": "as", "tier": "T3"}
         ]
@@ -691,7 +700,7 @@
         "Amplifier": [
           {"mode": "moc", "tier": "T5"},
           {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T4"}
+          {"mode": "as", "tier": "T5"}
         ]
       }
     },
