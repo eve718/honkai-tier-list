@@ -4,7 +4,7 @@
       "roles": {
         "DPS": [
           {"mode": "moc", "tier": "T0.5"},
-          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T1"},
           {"mode": "as", "tier": "T0.5"}
         ]
       }
@@ -167,7 +167,7 @@
       "roles": {
         "DPS": [
           {"mode": "moc", "tier": "T0.5"},
-          {"mode": "pf", "tier": "T1"},
+          {"mode": "pf", "tier": "T0.5"},
           {"mode": "as", "tier": "T1"}
         ]
       }
@@ -176,7 +176,7 @@
       "roles": {
         "DPS": [
           {"mode": "moc", "tier": "T0.5"},
-          {"mode": "pf", "tier": "T1"},
+          {"mode": "pf", "tier": "T1.5"},
           {"mode": "as", "tier": "T0.5"}
         ]
       }
@@ -185,7 +185,7 @@
       "roles": {
         "DPS": [
           {"mode": "moc", "tier": "T0.5"},
-          {"mode": "pf", "tier": "T0"},
+          {"mode": "pf", "tier": "T0.5"},
           {"mode": "as", "tier": "T0.5"}
         ]
       }
@@ -194,7 +194,7 @@
       "roles": {
         "Support DPS": [
             {"mode": "moc", "tier": "T1"},
-            {"mode": "pf", "tier": "T0"},
+            {"mode": "pf", "tier": "T0.5"},
             {"mode": "as", "tier": "T1"}
         ]
       }
@@ -205,6 +205,15 @@
           {"mode": "moc", "tier": "T0.5"},
           {"mode": "pf", "tier": "T0.5"},
           {"mode": "as", "tier": "T0"}
+        ]
+      }
+    },
+    "The Dahlia": {
+      "roles": {
+        "Amplifier": [
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
@@ -257,7 +266,7 @@
       "roles": {
         "DPS": [
           {"mode": "moc", "tier": "T1.5"},
-          {"mode": "pf", "tier": "T1"},
+          {"mode": "pf", "tier": "T1.5"},
           {"mode": "as", "tier": "T2"}
         ],
         "Support DPS": [
@@ -271,7 +280,7 @@
       "roles": {
         "DPS": [
           {"mode": "moc", "tier": "T1"},
-          {"mode": "pf", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
           {"mode": "as", "tier": "T0.5"}
         ]
       }
@@ -279,9 +288,9 @@
     "Rappa": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T2"},
-          {"mode": "pf", "tier": "T1.5"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T0.5"},
+          {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -366,7 +375,7 @@
       "roles": {
         "Amplifier": [
           {"mode": "moc", "tier": "T0.5"},
-          {"mode": "pf", "tier": "T1"},
+          {"mode": "pf", "tier": "T1.5"},
           {"mode": "as", "tier": "T0.5"}
         ]
       }
@@ -374,9 +383,9 @@
     "Fugue": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T2"},
-          {"mode": "pf", "tier": "T1.5"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T1"},
+          {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -392,18 +401,18 @@
     "Boothill": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T2"},
-          {"mode": "pf", "tier": "T5"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "moc", "tier": "T1"},
+          {"mode": "pf", "tier": "T4"},
+          {"mode": "as", "tier": "T1"}
         ]
       }
     }, 
     "Firefly": {
       "roles": {
         "DPS": [
-          {"mode": "moc", "tier": "T2"},
-          {"mode": "pf", "tier": "T3"},
-          {"mode": "as", "tier": "T1.5"}
+          {"mode": "moc", "tier": "T0.5"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T0.5"}
         ]
       }
     },
@@ -456,7 +465,7 @@
       "roles": {
         "Amplifier": [
           {"mode": "moc", "tier": "T1"},
-          {"mode": "pf", "tier": "T1"},
+          {"mode": "pf", "tier": "T1.5"},
           {"mode": "as", "tier": "T1"}
         ]
       }
@@ -465,7 +474,7 @@
       "roles": {
         "Sustain": [
           {"mode": "moc", "tier": "T1.5"},
-          {"mode": "pf", "tier": "T1"},
+          {"mode": "pf", "tier": "T1.5"},
           {"mode": "as", "tier": "T1"}
         ]
       }
@@ -491,9 +500,9 @@
     "Imaginary Trailblazer": {
       "roles": {
         "Amplifier": [
-          {"mode": "moc", "tier": "T3"},
-          {"mode": "pf", "tier": "T2"},
-          {"mode": "as", "tier": "T2"}
+          {"mode": "moc", "tier": "T1.5"},
+          {"mode": "pf", "tier": "T1.5"},
+          {"mode": "as", "tier": "T1"}
         ]
       }
     },
@@ -501,7 +510,7 @@
       "roles": {
         "DPS": [
           {"mode": "moc", "tier": "T3"},
-          {"mode": "pf", "tier": "T3"},
+          {"mode": "pf", "tier": "T4"},
           {"mode": "as", "tier": "T4"}
         ]
       }
